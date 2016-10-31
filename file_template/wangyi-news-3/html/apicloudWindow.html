@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>window</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <style>
+        html, body {
+            height: 100%;
+            min-width: 320px;
+        }
+        body {
+            font-size: 14px;
+        }
+        /*header*/
+        .header {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            border-bottom: 1px solid #E5E5E5;
+            -webkit-box-pack: center;
+            -webkit-box-align: center;
+            background-color: #E5E5E5;
+        }
+        .header-title {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            flex: 1;
+        }
+        .header a {
+            display: block;
+            background-size: 20px;
+            padding: 20px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .header .back {
+            background-image: url("../image/left.png");
+        }
+
+        .header .logo {
+            background-size: 45px;
+            background-image: url("../image/logo.png");
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="header">
+        <a class="back" tapmode="" onclick=""></a>
+        <div class="header-title">
+            <a class="logo" tapmode=""></a>
+        </div>
+        <a  tapmode="" onclick=""></a>
+    </div>
+</header>
+<script type="text/javascript" src="../script/api.js"></script>
+<script>
+    apiready=function(){
+        var $header=$api.dom('.header');
+        $api.fixIos7Bar($header);
+        var $header_h=$api.offset($header).h;
+        api.openFrame({
+            name:'apicloudFrame1',
+            url:'apicloudFrame1.html',
+            rect:{
+                x:0,
+                y:$header_h,
+                w:'auto',
+                h:'auto'
+            }
+        })
+    }
+</script>
+</body>
+</html>

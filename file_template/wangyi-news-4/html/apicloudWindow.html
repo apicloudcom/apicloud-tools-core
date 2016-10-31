@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>window</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/common.css"/>
+    <style>
+        body, html {
+        }
+
+        .header {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+        }
+        .title {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            flex: 1;
+        }
+
+        .login-header a {
+            padding: 30px;
+            background-size: 50px;
+        }
+        .index-header a,.detail-header a{
+            display: block;
+            background-size: 30px;
+            padding: 20px;
+        }
+        .header a{
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .close {
+            background-image: url("../image/close_icon_normal@2x.png");
+        }
+
+        .setting {
+            background-image: url("../image/setting_icon_normal@2x.png");
+        }
+
+        .login-header .nologin-user {
+            -webkit-transform: rotateY(0deg);
+            background-image: url("../image/user_defaulthead@2x.png");
+        }
+
+
+        .login-header {
+            height: 100%;
+            background-color: #6ab494;
+        }
+
+        .title {
+            text-align: center;
+            padding-top: 15px;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-flex-flow: column;
+            flex-flow: column;
+        }
+
+        .login {
+            color: #323237;
+            font-size: 18px;
+        }
+
+
+        .mine {
+            background-color: #6ab494;
+            padding-top: 5px;
+        }
+
+        .mine li, .bottom li {
+            display: inline-block;
+            width: 32%;
+            text-align: center;
+            padding: 20px 0 6px;
+            background-size: 30px;
+            background-repeat: no-repeat;
+            background-position: top;
+        }
+
+        .bottom li {
+            width: 18.89%;
+            background-size: 30px;
+        }
+
+        .mine li a {
+            margin: 15px 10px 0 10px;
+            color: #323237;
+        }
+
+        .bottom li a {
+            margin: 15px 10px 0 10px;
+            color: #737377;
+            font-size: 12px;
+        }
+
+        .read {
+            background-image: url("../image/user_reading_circle@2x.png");
+        }
+
+        .star {
+            background-image: url("../image/user_favor_circle@2x.png");
+        }
+
+        .comment {
+            background-image: url("../image/user_comment_circle@2x.png");
+        }
+
+        .activity {
+            margin: 0 10px;
+        }
+
+        .activity li {
+            padding: 15px 0;
+            background-size: 8px;
+            background-repeat: no-repeat;
+            background-position: right;
+            background-image: url("../image/setting_cell_arrow@2x.png");
+            border-bottom: 1px solid #F6F6F6;
+        }
+
+        .activity li:last-child {
+            border-bottom: none;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            margin-left: 10px;
+        }
+
+        .tag {
+            color: #FFFFFF;
+            padding: 2px;
+            font-size: 13px;
+            border-radius: 2px;
+        }
+
+        .a1 {
+            background-color: #FB000D;
+        }
+
+        .a2 {
+            background-color: #2CA6E6;
+        }
+
+        .a3 {
+            background-color: #FC5E48;
+        }
+
+        .a4 {
+            background-color: #04BC6F;
+        }
+
+        .plugin {
+            background-image: url("../image/plugin_icon_setting@2x.png");
+        }
+
+        .offline {
+            background-image: url("../image/pluginboard_icon_offline@2x.png");
+        }
+
+        .night {
+            background-image: url("../image/pluginboard_icon_night@2x.png");
+        }
+
+        .search {
+            background-image: url("../image/pluginboard_icon_search@2x.png");
+        }
+
+        .more {
+            background-image: url("../image/pluginboard_icon_more@2x.png");
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="login-header header ">
+        <a class="close" tapmode="" onclick=""></a>
+        <div class="hidden title">
+            <a class="nologin-user" id="user" tapmode="" onclick=""></a>
+            <div class="login">立即登录</div>
+        </div>
+        <a class="setting" tapmode=""></a>
+    </div>
+</header>
+<ul class="mine">
+    <li class="read">
+        <a>
+            阅读
+        </a>
+    </li>
+    <li class="star">
+        <a>
+            收藏
+        </a>
+    </li>
+    <li class="comment">
+        <a>
+            跟帖
+        </a>
+    </li>
+</ul>
+<ul class="activity">
+    <li>
+        <span class="a1 tag">云api</span>
+        <span class="subtitle">减少70%服务器端编码工作量</span>
+    </li>
+    <li>
+        <span class="a2 tag">端api</span>
+        <span class="subtitle">积木拼装式的开发跨平台App</span>
+    </li>
+    <li>
+        <span class="a3 tag">开发</span>
+        <span class="subtitle">端开发-云开发-应用服务</span>
+    </li>
+    <li>
+        <span class="a4 tag">价格</span>
+        <span class="subtitle">公测阶段全免费</span>
+    </li>
+</ul>
+<ul class="bottom">
+    <li class="plugin">
+        <a>
+            APICloud Studio
+        </a>
+    </li>
+    <li class="offline">
+        <a>
+            托管
+        </a>
+    </li>
+    <li class="night">
+        <a>
+            推送
+        </a>
+    </li>
+    <li class="search">
+        <a>
+            统计
+        </a>
+    </li>
+    <li class="more">
+        <a>
+            安全
+        </a>
+    </li>
+</ul>
+</body>
+</html>

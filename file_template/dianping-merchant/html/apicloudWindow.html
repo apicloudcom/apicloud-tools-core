@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>window</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    
+    <style>
+      .topbar {background: #FF8400; height:50px; border-bottom: 1px solid #DDDFE3;position: relative;}
+     .whitebar {background-color: #f2f2f2;}
+    .secCitylistarrow {vertical-align: top; width: 15px; padding-top: 12px; padding-left: 15px;}
+    .back {float: left;}
+    .filter {float: right;}
+    .filter img {width: 25px;padding-top: 10px;padding-right: 10px;}
+    .switch {position: absolute; left: 90px; right: 90px;background-color: #fcfcfc;text-align: center;height: 30px;line-height: 30px;bottom: 10px;border-radius: 4px;color: #fff;border: 1px solid #6ab494;}
+    .switch div {width: 50%;display: inline-block;color: #6ab494;}
+    .switch div:first-child {border-radius: 4px 0 0 4px;}
+    .switch div:last-child {border-radius: 0px 4px 4px 0px;}
+    .selectswitch {background-color: #6ab494;color: #fff !important;}
+    </style>
+  </head>
+    <body>
+        <div id="wrap">
+            <div class="topbar whitebar" id="topbar">
+                <div class="back" tapmode onclick=""><img src="../image/ic_back_u.png" alt="" class="secCitylistarrow"></div>
+                <div class="switch">
+                    <div class="shop" id="leftbtn" tapmode onclick="openLeftgroup()">商户</div><div class="tuan" id="rightbtn" tapmode onclick="openRight()">团购</div>
+                </div>
+                <div class="filter"><img src="../image/list_icon_filter.png" alt=""></div>
+            </div>
+            <div id="main"></div>
+        </div>
+    </body>
+  <script type="text/javascript" src="../script/api.js"></script>
+  <script type="text/javascript">
+        function openLeftgroup () {
+            var thridHeader = $api.byId('topbar');
+            var thridHeader = $api.offset(thridHeader);
+
+            // 清除右部class
+            var leftbtn = $api.byId('leftbtn');
+            var rightbtn = $api.byId('rightbtn');
+
+            $api.addCls(leftbtn, 'selectswitch');
+            $api.removeCls(rightbtn, 'selectswitch');
+
+
+            api.openFrame ({
+                name: 'apicloudFrame1',
+                url: 'apicloudFrame1.html',
+                rect:{
+                    x:0,
+                    y:thridHeader.h,
+                    w:'auto',
+                    h:'auto'
+                },
+                bounces: false,
+                delay:200
+            });
+        }
+
+        function openRight () {
+            var thridHeader = $api.byId('topbar');
+            var thridHeader = $api.offset(thridHeader);
+
+            // 清除左部class
+            var leftbtn = $api.byId('leftbtn');
+            var rightbtn = $api.byId('rightbtn');
+
+            $api.addCls(rightbtn, 'selectswitch');
+            $api.removeCls(leftbtn, 'selectswitch');
+            
+            api.openFrame ({
+                name: 'apicloudFrame1',
+                url: 'apicloudFrame1.html',
+                rect:{
+                    x:0,
+                    y:thridHeader.h,
+                    w:'auto',
+                    h:'auto'
+                },
+                bounces: false,
+                delay:200
+            });
+        }
+
+        // 完成首页初始化
+        apiready = function(){
+            var thridHeader = $api.byId('topbar');
+            $api.fixIos7Bar(thridHeader);
+            var thridHeader = $api.offset(thridHeader);
+
+            openLeftgroup();
+        };
+  </script>
+</html>

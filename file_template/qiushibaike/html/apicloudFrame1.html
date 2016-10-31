@@ -1,0 +1,193 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>frame</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <style>
+        body.qiushi-frame{
+            background-color: #EDEDED;
+        }
+        body.qiushi-frame #wrap{
+            display: block;
+        }
+        #main.qiushi-frame{
+            padding: 0.313em 0.625em;
+            background-color: #EDEDED;
+        }
+        #main.qiushi-frame .qiushi-box{
+            background-color: #FFFFFF;
+            width: 100%;
+            border-radius: 2px;
+            /**/
+            margin-bottom: 0.56em;
+        }
+        #main.qiushi-frame .qiushi-top{
+            padding-left: 0.75em;
+            padding-top: 0.75em;
+        }
+        .qiushi-top .qiushi-icon-box{
+            width: 42px;
+            height: 42px;
+        }
+        .qiushi-top .qiushi-icon-box img{
+            width: 42px;
+            border-radius: 21px;
+            display: block;
+        }
+        .qiushi-top .user-name{
+            height: 42px;
+            line-height: 42px;
+            text-indent: 0.75em;
+            color: #3B3D42;
+        }
+        .qiushi-box .qiushi-content-text{
+            padding: 0.75em;
+        }
+        .qiushi-content-text .text{
+            color: #666554;
+            display: block;
+        }
+        .qiushi-box .qiushi-content-img{
+            padding-bottom: 0.75em;
+        }
+        .qiushi-box .qiushi-content-img img{
+            width: 100%;
+            display: block;
+        }
+        .qiushi-box .status-box{
+            padding-left: 0.75em;
+        }
+        .status-box span{
+            font-size: 0.625em;
+            color: #969696;
+            display: inline-block;
+        }
+        .qiushi-box .btns-group{
+            height: 63px;
+        }
+        .btns-group .icon{
+            width: 63px;
+            height: 63px;
+        }
+        .btns-group .icon.pull-left{
+            margin-right: 0.56em;
+        }
+        .btns-group .icon.pull-right{
+        }
+        .btns-group .icon-agree{
+            background: url(../image/operation_support.png) center center no-repeat;
+            background-size: 100%;
+        }
+        .btns-group .icon-agree:active,.btns-group .icon-agree.tap-active,.btns-group .icon-agree.active{
+            background: url(../image/operation_support_press.png) center center no-repeat;
+            background-size: 100%;
+        }
+        .btns-group .icon-disagree{
+            background: url(../image/operation_unsupport.png) center center no-repeat;
+            background-size: 100%;
+        }
+        .btns-group .icon-disagree:active,.btns-group .icon-disagree.tap-active,.btns-group .icon-disagree.active{
+            background: url(../image/operation_unsupport_press.png) center center no-repeat;
+            background-size: 100%;
+        }
+        .btns-group .icon-comment{
+            background: url(../image/operation_comments.png) center center no-repeat;
+            background-size: 100%;
+        }
+        .btns-group .icon-share {
+            float: right;
+            background: url(../image/operation_more.png) center center no-repeat;
+            background-size: 100%;
+        }
+        .btns-group .icon-comment:active,.btns-group .icon-comment.tap-active,.btns-group .icon-share:active,.btns-group .icon-share.tap-active{
+            background-color: #E5E5E5;
+            background-size: 100%;
+        }
+        .qiushi-box .btns-group{
+            height: 63px;
+        }
+        /*common*/
+        .pull-left{
+            float: left;
+        }
+        .pull-right{
+            float: right;
+        }
+        .clearfix:after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+    </style>
+</head>
+<body class="qiushi-frame">
+<div id="wrap">
+    <div id="main" class="qiushi-frame">
+        <div class="qiushi-box">
+            <div class="qiushi-top clearfix" tapmode="tap-active" onclick="" data-id="120333" data-type="">
+                    <span class="qiushi-icon-box pull-left">
+                        <img src="../image/default_users_avatar.png" alt="">
+                    </span>
+                <span class="user-name pull-left">apicloud</span>
+            </div>
+            <div class="qiushi-content-text" tapmode="tap-active" onclick="" data-id="90000099">
+                <p class="text">重新定义移动应用开发</p>
+            </div>
+            <div class="qiushi-content-img" tapmode="tap-active" onclick="" data-id="90000099">
+                <img src="../image/1.png" alt="">
+            </div>
+            <div class="status-box">
+                    <span class="agree">
+                        <span class="agree-count">1000</span>
+                        顶&nbsp;·
+                    </span>
+                    <span class=" comment">
+                        <span class=" comment-count">1000</span>
+                        评论
+                    </span>
+            </div>
+            <div class="btns-group clearfix">
+                <div class="icon icon-agree pull-left" tapmode="tap-active" onclick=""></div>
+                <div class="icon icon-disagree pull-left" tapmode="tap-active" onclick=""></div>
+                <div class="icon icon-comment pull-left" tapmode="tap-active" onclick="" data-id="90000099"></div>
+                <div class="icon icon-share pull-right" tapmode="tap-active" onclick="" data-id="100100004"></div>
+            </div>
+        </div>
+        <div class="qiushi-box">
+            <div class="qiushi-top clearfix" tapmode="tap-active" onclick="" data-id="120333" data-type="">
+                    <span class="qiushi-icon-box pull-left">
+                        <img src="../image/default_users_avatar.png" alt="">
+                    </span>
+                <span class="user-name pull-left">apicloud</span>
+            </div>
+            <div class="qiushi-content-text" tapmode="tap-active" onclick="" data-id="90000099">
+                <p class="text">重新定义移动应用开发</p>
+            </div>
+            <div class="qiushi-content-img" tapmode="tap-active" onclick="" data-id="90000099">
+                <!-- <img src="../../image/app95680733.jpg" alt=""> -->
+            </div>
+            <div class="status-box">
+                    <span class="agree">
+                        <span class="agree-count">1000</span>
+                        顶&nbsp;·
+                    </span>
+                    <span class=" comment">
+                        <span class=" comment-count">1000</span>
+                        评论
+                    </span>
+            </div>
+            <div class="btns-group clearfix">
+                <div class="icon icon-agree pull-left" tapmode="tap-active" onclick=""></div>
+                <div class="icon icon-disagree pull-left" tapmode="tap-active" onclick=""></div>
+                <div class="icon icon-comment pull-left" tapmode="tap-active" onclick="" data-id="90000099"></div>
+                <div class="icon icon-share pull-right" tapmode="tap-active" onclick="" data-id="100100004"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

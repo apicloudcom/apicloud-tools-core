@@ -1,0 +1,410 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="copyright" content="www.apicloud.com"/>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>frame</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <style>
+        html, body {
+            min-height: 100%;
+        }
+
+        .fr {
+            float: right;
+        }
+
+        .mt20 {
+            margin-top: 20px;
+        }
+
+        .hdivider {
+            width: 100%;
+            height: 1px;
+            background-color: #e0e0e0;
+        }
+
+        .row {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+        }
+
+        .col {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            flex: 1;
+            margin: 0 5px;
+            position: relative;
+        }
+
+        .swiper-container img {
+            width: 100%;
+        }
+
+        .sectionTitle {
+            height: 2em;
+            line-height: 2em;
+            font-size: 1.12em;
+        }
+
+        .sectionTitle .titleDivider {
+            display: inline-block;
+            height: 1.12em;
+            width: 3px;
+            vertical-align: top;
+            background-color: #D43C33;
+            margin-top: 0.44em;
+            margin-left: 0.7em;
+            margin-right: 0.3em;
+        }
+        .col .listcoverbar {
+            position: absolute;
+            top: 0;
+            background-color: rgba(0, 0, 0, 0.4);
+            width: 100%;
+            height: 1.2em;
+        }
+
+        .col .listcoverbar span {
+            color: #fff;
+        }
+
+        .col .listcoverbar .earphone {
+            width: 1em;
+            margin-top: 0.2em;
+            margin-right: 0.3em;
+        }
+
+        .col .listcover {
+            width: 100%;
+        }
+
+        .col .listtitle {
+            height: 2.4em;
+            font-size:12px;
+            line-height: 1.2em;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            -webkit-flex-flow: column;
+            flex-flow: column;
+        }
+        .egret-flex-item {
+            display: -webkit-box;
+           /* display: -webkit-flex;
+            display: flex;*/
+            -webkit-box-align: center;
+            height: 4em;
+        }
+
+        .egret-flex-item-logo {
+            max-width: 50px;
+            min-width: 50px;
+            margin-left: 0.5em;
+            margin-right: 0.2em;
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            flex: 1;
+            -webkit-box-align: center;
+        }
+
+        .egret-flex-item-logo img {
+            height: 3em;
+            width: 3em;
+            -webkit-box-align: center;
+            vertical-align: top;
+        }
+        .egret-flex-item-shelf {
+            overflow: hidden;
+            -webkit-box-flex: 2;
+            -webkit-flex: 2;
+            flex: 2;
+            -webkit-box-align: center;
+        }
+
+        .egret-flex-item-shelf div {
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .egret-flex-item-shelf .egret-flex-item-shelf01 {
+            font-size: 14px;
+        }
+
+        .egret-flex-item-shelf .egret-flex-item-shelf02 {
+            font-size: 0.6em;
+            color: #666;
+            margin-top: 0.6em;
+        }
+
+        .egret-flex-item-shelf .egret-flex-item-redclassify {
+            color: #E03F40;
+            border: 1px solid #E03F40;
+            font-size: inherit;
+            padding: 0 0.1em;
+            border-radius: 1px;
+            margin-right: 5px;
+            box-sizing: border-box;
+        }
+        .egret-flex-item-arrow {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            flex: 1;
+            max-width: 10px;
+            min-width: 10px;
+            margin-right: 5px;
+        }
+
+        .egret-flex-item-arrow img {
+            width: 100%;
+            max-width: 10px;
+        }
+        .swipe {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .swipe-wrap {
+            overflow: hidden;
+            position: relative;
+            height: 185px;
+        }
+
+        .swipe-wrap > div {
+            float: left;
+            width: 100%;
+            position: relative;
+        }
+
+        .swipe-wrap > div {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .swipe-wrap img {
+            width: 100%;
+            height: 185px;
+            max-height: 240px;
+            min-height: 132px;
+            min-width: 320px;
+            max-width: 640px;
+        }
+
+        #slide {
+            margin: 0 auto;
+            position: relative;
+        }
+
+        #pointer {
+            position: absolute;
+            bottom: 0px;
+            overflow: hidden;
+            width: 92%;
+            text-align: right;
+        }
+
+        #pointer a {
+            display: inline-block;
+            width: 3px;
+            height: 3px;
+            border-radius: 3px;
+            margin-right: 4px;
+            background-color: #9B9B9B;
+            margin-bottom: 1.5px;
+        }
+
+        #pointer a.active {
+            width: 6px;
+            height: 6px;
+            background-color: #000000;
+            margin-bottom: 0;
+        }
+
+        .banner-lable {
+            position: relative;
+            padding: 10px;
+            line-height: 17px;
+            font-size: 13px;
+            padding: 5px 10px 0 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div id='slide' class='swipe'>
+    <div class='swipe-wrap' id="banner-content">
+        <div onclick="" tapmode="" data-value="apicloud重新定义移动应用开发">
+            <img src="../image/4-14.png"/>
+        </div>
+        <div onclick="" tapmode="" data-value="apicloud重新定义移动应用开发">
+            <img src="../image/4-15.png"/>
+        </div>
+        <div onclick="" tapmode="" data-value="apicloud重新定义移动应用开发">
+            <img src="../image/4-16.png"/>
+        </div>
+        <div onclick="" tapmode="" data-value="apicloud重新定义移动应用开发">
+            <img src="../image/4-17.png"/>
+        </div>
+        <div onclick="" tapmode="" data-value="apicloud重新定义移动应用开发">
+            <img src="../image/4-18.png"/>
+        </div>
+        <div onclick="" tapmode="" data-value="apicloud重新定义移动应用开发">
+            <img src="../image/4-19.png"/>
+        </div>
+    </div>
+
+</div>
+<div class="banner-lable">
+    <span id="banner-title">apicloud重新定义移动应用开发</span>
+
+    <div id="pointer">
+        <a class="active"></a>
+        <a class=""></a>
+        <a class=""></a>
+        <a class=""></a>
+        <a class=""></a>
+        <a class=""></a>
+    </div>
+</div>
+
+<!-- 2 热门推荐 -->
+<div class="sectionTitle">
+    <div class="titleDivider"></div>
+    <span>热门推荐</span></div>
+<div class="row">
+    <div class="col" tapmode onclick="">
+        <div class="listcoverbar"><span class="fr">23万</span><img src="../image/4-cm2_list_detail_icn_music_sm.png" alt=""
+                                                                  class="earphone fr"></div>
+        <img src="../image/4-24.png" alt="" class="listcover">
+
+        <div class="listtitle">apicloud重新定义移动应用开发</div>
+    </div>
+    <div class="col" tapmode onclick="">
+        <div class="listcoverbar"><span class="fr">27万</span><img src="../image/4-cm2_list_detail_icn_music_sm.png" alt=""
+                                                                  class="earphone fr"></div>
+        <img src="../image/4-24.png" alt="" class="listcover">
+
+        <div class="listtitle">apicloud重新定义移动应用开发</div>
+    </div>
+    <div class="col" tapmode onclick="">
+        <div class="listcoverbar"><span class="fr">49万</span><img src="../image/4-cm2_list_detail_icn_music_sm.png" alt=""
+                                                                  class="earphone fr"></div>
+        <img src="../image/4-24.png" alt="" class="listcover">
+
+        <div class="listtitle">apicloud重新定义移动应用开发</div>
+    </div>
+</div>
+<div class="row	mt20">
+    <div class="col" tapmode onclick="">
+        <div class="listcoverbar"><span class="fr">59万</span><img src="../image/4-cm2_list_detail_icn_music_sm.png" alt=""
+                                                                  class="earphone fr"></div>
+        <img src="../image/4-24.png" alt="" class="listcover">
+
+        <div class="listtitle">apicloud重新定义移动应用开发</div>
+    </div>
+    <div class="col" tapmode onclick="">
+        <div class="listcoverbar"><span class="fr">22万</span><img src="../image/4-cm2_list_detail_icn_music_sm.png" alt=""
+                                                                  class="earphone fr"></div>
+        <img src="../image/4-24.png" alt="" class="listcover">
+
+        <div class="listtitle">apicloud重新定义移动应用开发</div>
+    </div>
+    <div class="col" tapmode onclick="">
+        <div class="listcoverbar"><span class="fr">12万</span><img src="../image/4-cm2_list_detail_icn_music_sm.png" alt=""
+                                                                  class="earphone fr"></div>
+        <img src="../image/4-24.png" alt="" class="listcover">
+
+        <div class="listtitle">apicloud重新定义移动应用开发</div>
+    </div>
+</div>
+
+<!-- 3 个性化推荐 -->
+<div class="sectionTitle mt20">
+    <div class="titleDivider"></div>
+    <span>apicloud</span></div>
+<div class="egret-flex-item" tapmode="fmbtnhover" onclick="">
+    <div class="egret-flex-item-logo">
+        <img src="../image/4-25.png" alt="" class="">
+    </div>
+    <div class="egret-flex-item-shelf">
+        <div class="egret-flex-item-shelf01">apicloud</div>
+        <div class="egret-flex-item-shelf02">apicloud重新定义移动应用开发</div>
+    </div>
+    <div class="egret-flex-item-arrow">
+        <img src="../image/4-arrow_right.png" alt="" class="">
+    </div>
+</div>
+<div class="hdivider"></div>
+<div class="egret-flex-item" tapmode="fmbtnhover" onclick="">
+    <div class="egret-flex-item-logo">
+        <img src="../image/4-20.png" alt="" class="">
+    </div>
+    <div class="egret-flex-item-shelf">
+        <div class="egret-flex-item-shelf01">apicloud重新定义移动应用开发</div>
+    </div>
+    <div class="egret-flex-item-arrow">
+        <img src="../image/4-arrow_right.png" alt="" class="">
+    </div>
+</div>
+<div class="hdivider"></div>
+
+<!-- 4 最新音乐 -->
+<div class="sectionTitle mt20">
+    <div class="titleDivider"></div>
+    <span>apicloud</span></div>
+<div class="egret-flex-item" tapmode="fmbtnhover" onclick="">
+    <div class="egret-flex-item-logo">
+        <img src="../image/4-20.png" alt="" class="">
+    </div>
+    <div class="egret-flex-item-shelf">
+        <div class="egret-flex-item-shelf01">端api</div>
+    </div>
+    <div class="egret-flex-item-arrow">
+        <img src="../image/4-arrow_right.png" alt="" class="">
+    </div>
+</div>
+<div class="hdivider"></div>
+<div class="egret-flex-item" tapmode="fmbtnhover" onclick="">
+    <div class="egret-flex-item-logo">
+        <img src="../image/4-20.png" alt="" class="">
+    </div>
+    <div class="egret-flex-item-shelf">
+        <div class="egret-flex-item-shelf01">端api</div>
+    </div>
+    <div class="egret-flex-item-arrow">
+        <img src="../image/4-arrow_right.png" alt="" class="">
+    </div>
+</div>
+<div class="hdivider"></div>
+
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/swipe.js"></script>
+<script type="text/javascript">
+    function initSlide() {
+        var $pointer = $api.byId('pointer');
+        window.mySlide = Swipe(slide, {
+            continuous: true,
+            disableScroll: true,
+            stopPropagation: true,
+            callback: function (index, element) {
+                var $actA = $api.dom($pointer, 'a.active');
+                $api.removeCls($actA, 'active');
+                $api.addCls($api.eq($pointer, index + 1), 'active');
+                $api.html($api.byId('banner-title'), $api.attr(element, 'data-value'))
+            },
+            transitionEnd: function (index, element) {
+            }
+        });
+    }
+    initSlide();
+</script>
+</html>

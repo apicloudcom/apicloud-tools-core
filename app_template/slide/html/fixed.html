@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>fixedPane</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <style>
+        html, body {
+            background-color: #dfdede;
+        }
+        li {
+            padding: 3px 10px;
+            border-bottom: 1px solid #d4d3d3;
+        }
+        .liActive {
+            background-color: #3ABA63;
+        }
+        li a {
+            display: block;
+            padding: 10px 30px;
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <ul>
+        <li tapmode="liActive" onclick=""><a class="home">首页</a></li>
+        <li tapmode="liActive" onclick=""><a class="nav1">频道1</a></li>
+        <li tapmode="liActive" onclick=""><a class="nav2">频道2</a></li>
+        <li tapmode="liActive" onclick=""><a class="nav3">频道3</a></li>
+        <li tapmode="liActive" onclick=""><a class="nav4">频道4</a></li>
+        <li tapmode="liActive" onclick=""><a class="nav5">频道5</a></li>
+    </ul>
+</nav>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script>
+apiready = function () {
+    api.setStatusBarStyle({
+        style: 'dark',
+        color: '#000'
+    });
+    $api.fixStatusBar($api.dom('nav'));
+};
+</script>
+</html>

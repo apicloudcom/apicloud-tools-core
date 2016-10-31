@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>window</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <style>
+    	#footer {
+    		height: 56px;
+			line-height: 55px;
+			background-color: #f2f2f2;
+    	}
+		ul {  
+			display: -webkit-box;
+			display: -webkit-flex;
+			display: flex;
+		}
+    	.wxbtn {
+    		background: url(../image/bottombtn0101.png) no-repeat center 4px;
+    	}
+    	.txbtn {
+    		background: url(../image/bottombtn0201.png) no-repeat center 4px;
+    	}
+    	.fxbtn {
+    		background: url(../image/bottombtn0301.png) no-repeat center 4px;
+    	}
+    	.mebtn {
+    		background: url(../image/bottombtn0401.png) no-repeat center 4px;
+    	}
+    	#footer li{
+    		-webkit-box-flex: 1;
+			-webkit-flex: 1;
+    		flex:1;
+    		height: 55px;
+    	}
+    	.bottom_btn {
+    		background-position-y: 4px;
+    		background-size: 30px;
+    		padding-top: 16px;
+			font-size: 12px;
+			color: #323237;
+			width: 99%;
+			height: 39px;
+    	}
+    	.activebtn0 {
+    		background: url(../image/bottombtn0102.png) no-repeat center 4px;
+    	}
+    	.activebtn1 {
+    		background: url(../image/bottombtn0202.png) no-repeat center 4px;
+    	}
+    	.activebtn2 {
+    		background: url(../image/bottombtn0302.png) no-repeat center 4px;
+    	}
+    	.activebtn3 {
+    		background: url(../image/bottombtn0402.png) no-repeat center 4px;
+    	}
+    	.activebtn {
+    		color:#6ab494;
+    		background-size: 30px;
+    	}
+		.bar_item_hover {
+			background: #000;
+		}
+		.topbar {background: #f2f2f2; height:50px; border-bottom: 1px solid #DDDFE3;}
+		.btn_click {background: #DADDE0;}
+		.topbar_title {display: inline-block;font-size: 20px; line-height: 50px;padding-left: 12px;}
+		.scrollbar {display: -webkit-box;display: -webkit-flex;display: flex; text-align: center; height: 40px; line-height: 40px;background: #EBECF0;font-size: 12px;position: relative;}
+		.flex1 {-webkit-box-flex:1;-webkit-flex: 1;flex:1;color: #909090;}
+		.indexbar {position: absolute;width: 50%;height: 5px;left: 0px;bottom: 0px;-webkit-transition: 300ms;}
+		.redbox {background: #6ab494;width: 40px;height: 5px;position: relative;left: auto;right: auto; margin-left: auto; margin-right: auto;}
+
+		/*推荐头部*/
+		.right_btn{float: right;padding: 11px 15px 11px 15px;}
+		#logo {padding: 11px 0 0 10px;height: 28px;}
+		#topbar_search {height: 28px;} 
+		.btn_click {background: #DADDE0;} 
+		
+		.titlebar {display: none;}
+		.activebar {display: block;}
+		.bottomhover {background-color: #46494B;}
+		/* 热点头部 */
+		#topbar_refresh {width: 40px;padding:5px 10px;}
+		/* 本地刷新图标 */
+		#localrefresh {display:none;float: right; width: 40px; padding: 5px 10px;}
+    </style>
+</head>
+<body>
+    <div id="wrap">
+		<!-- 热点头部 -->
+		<div id="hotTitle" class="titlebar activebar">
+			<div class="topbar">
+		        <p class="topbar_title">热点</p>
+		        <img src="../image/local_icon_refresh.png" alt="" class="right_btn" id="topbar_refresh"   tapmode="btn_click" onclick="">
+		        <img src="../image/topbar_search.png" alt="" class="right_btn" id="topbar_search"  tapmode="btn_click">
+		    </div>
+		    <div class="scrollbar" id="scrollbarHot">
+		    	<div class="bar1 flex1" tapmode="btn_click" onclick="">精选</div>
+		    	<div class="bar2 flex1" tapmode="btn_click" onclick="" id="matchwidthHot">搞笑</div>
+		    	<div class="indexbar" id="indexbarHot"><div class="redbox"></div></div>
+		    </div>
+		</div>
+        <div id="main">
+                
+        </div>
+        <div id="footer">
+	        <ul>
+	        	<li tapmode="bottomhover" onclick="">
+	        		<a class="bottom_btn wxbtn weixin">推荐</a>
+	        	</li>
+	        	<li tapmode="bottomhover" onclick="">
+	        		<a class="bottom_btn txbtn communicate activebtn activebtn1">热点</a>
+	        	</li>
+	        	<li tapmode="bottomhover" onclick="">
+	        		<a class="bottom_btn fxbtn discover">片库</a>
+	        	</li>
+	        	<li tapmode="bottomhover" onclick="">
+	        		<a class="bottom_btn mebtn home">离线</a>
+	        	</li>
+	        </ul>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+    apiready = function(){
+		var hotheader = $api.byId('hotTitle');
+        $api.fixIos7Bar(hotheader);
+        var hotheader = $api.offset(hotheader);
+        var main = $api.byId('main');
+        var mainPos = $api.offset(main);
+		var footer = $api.byId('footer');
+		var footerPos = $api.offset(footer);
+		api.openFrame ({
+	        name: 'apicloudFrame1',
+	        url: 'apicloudFrame1.html',
+	        rect:{
+	            x:0,
+	            y:hotheader.h,
+	            w:'auto',
+	            h:api.frameHeight-hotheader.h -footerPos.h
+	        },
+	        pageParam: {name: 'test'},
+	        bounces: false,
+	        opaque: false,
+	        bgColor: 'rgba(70 , 70, 70,0)',
+	        vScrollBarEnabled:true,
+	        hScrollBarEnabled:true
+	    });
+    };
+</script>
+</html>

@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>window</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/common.css"/>
+    <style>
+
+        #header {
+            text-align: center;
+            background-color: #ffffff;
+            color: #323237;
+            background-size: 9px 48px;
+            width: 100%;
+            height: 48px;
+            position: relative;
+        }
+
+        #main {
+            padding: 1em;
+        }
+
+        #footer {
+            height: 44px;
+            line-height: 44px;
+            background-color: #E5E5E5;
+            width: 100%;
+            text-align: center;
+        }
+
+        #footer h5 {
+            color: #323237;
+        }
+
+        /* main页面样式  */
+        #headerBanner {
+            text-align: center;
+            background-color: #E5E5E5;
+            background-size: 4px 48px;
+            width: 100%;
+            height: 48px;
+            position: relative;
+        }
+
+        #headerBanner .banner {
+            float: left;
+            position: relative;
+            z-index: 2;
+            width: 25%;
+            height: 48px;
+            line-height: 48px;
+            color: #323237;
+        }
+
+        #headerBanner .banner.active {
+            color: #6ab494;
+            background-size: 20px 48px;
+        }
+
+        #headerBanner .banner_split {
+            width: 1px;
+            height: 30px;
+            background: #636363;
+            position: absolute;
+            z-index: 3;
+            top: 10px;
+        }
+
+        #headerBanner .banner_split.bs1 {
+            left: 25%;
+        }
+
+        #headerBanner .banner_split.bs2 {
+            left: 50%;
+        }
+
+        #headerBanner .banner_split.bs3 {
+            left: 75%;
+        }
+
+        /*选择城市按钮*/
+        #chooseCityBtn {
+            position: absolute;
+            left: 0;
+            width: 143px;
+            height: 48px;
+        }
+
+        #chooseCityBtn .chooseCityImg {
+            display: inline-block;
+            border: none;
+            outline: none;
+            width: 32px;
+            height: 32px;
+            float: left;
+            margin-left: 22px;
+            margin-top: 7px;
+
+        }
+
+        #chooseCityBtn .chooseCitySpan {
+            color: #323237;
+            line-height: 48px;
+        }
+    </style>
+</head>
+<body >
+<div id="wrap">
+    <div id="header">
+        <a id="chooseCityBtn" tapmode>
+            <img src="../image/logo.png" class="chooseCityImg">
+            <span class="chooseCitySpan">apicloud</span>
+        </a>
+    </div>
+    <div id="headerBanner">
+        <div class="banner frame_name active" tapmode onclick="">端api</div>
+        <div class="banner frame_name" tapmode onclick="">云api</div>
+        <div class="banner frame_name" tapmode onclick="">文档</div>
+        <div class="banner frame_name" tapmode onclick="">控制台</div>
+        <div class="banner_split bs1"></div>
+        <div class="banner_split bs2"></div>
+        <div class="banner_split bs3"></div>
+    </div>
+    <div id="main">
+
+    </div>
+    <div id="footer">
+        <h5>apicloud</h5>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+
+    apiready=function(){
+        var $header=$api.byId('header');
+        var $headerBanner=$api.byId('headerBanner');
+        $api.fixIos7Bar($header);
+        var $footer=$api.byId('footer');
+        var $header_h=$api.offset($header).h;
+        var $footer_h=$api.offset($footer).h;
+        var $$headerBanner_h=$api.offset($headerBanner).h;
+        api.openFrame({
+            name:'apicloudFrame1',
+            url:'apicloudFrame1.html',
+            rect:{
+                x:0,
+                y:$header_h+$$headerBanner_h,
+                w:'auto',
+                h:api.winHeight-$header_h-$$headerBanner_h-$footer_h
+            }
+        })
+    }
+
+</script>
+</html>

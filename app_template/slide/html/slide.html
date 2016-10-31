@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>slidPane</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <style>
+        header {
+            background-color: #f2f2f2;
+            border-bottom: 1px solid #f2f2f2;
+        }
+        .header {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;            
+        }
+        .header a{
+            display: block;
+            padding: 20px;
+        }
+        .title {
+            line-height:40px;
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            flex: 1;
+            text-align: center;
+        }
+        .header .menu {
+            background-size: 30px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-image: url("../image/menu.png");
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="header">
+        <a class="menu" tapmode="" onclick="sliding()"></a>
+        <div class="title" >APICloud</div>
+        <a></a>
+    </div>
+</header>
+<script type="text/javascript" src="../script/api.js"></script>
+<script>
+    function sliding() {
+        api.openSlidPane({type: 'left'});
+    }
+    apiready = function () {
+	    $api.fixStatusBar($api.dom('.header'));
+        api.addEventListener({
+            name: 'keyback'
+        }, function(ret, err){
+            api.closeWidget();
+        });
+	};
+</script>
+</body>
+</html>

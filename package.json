@@ -1,0 +1,28 @@
+{
+  "name": "apicloud-tools-core",
+  "version": "0.0.1",
+  "license": "GPL-3.0",
+  "description": "APICloud 开发工具核心库",
+  "main": "./lib/APICloud.js",
+  "engines": {
+    "node": ">=4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apicloudcom/apicloud-tools-core.git"
+  },
+  "scripts": {
+    "test": ""
+  },
+  "dependencies": {
+    "fs-extra": "^0.30.0",
+    "prompt": "^1.0.0",
+    "ws": "^1.1.1"
+  },
+  "bugs": {
+    "url": "https://github.com/apicloudcom/apicloud-tools-core/issues"
+  },
+  "homepage": "https://github.com/apicloudcom/apicloud-tools-core#readme",
+  "devDependencies": {},
+  "author": "APICloud"
+}

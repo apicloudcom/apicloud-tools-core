@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+  <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+  <title>frame</title>
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="stylesheet" type="text/css" href="../css/api.css" />
+	<style>
+		html {width: 100%;height: 100%;background: #e5e5e5;}
+		body {background: #e5e5e5;width: 100%;/*height: 100%;*/}
+		.recommand_card {box-sizing:border-box;-webkit-box-sizing:border-box;float: left;width: 50%;padding-left: 5px;padding-right: 5px;text-align: center;font-size: 12px;margin-bottom: 10px;}
+		.recommand_card img {width: 100%;}
+		.subtitle {padding-left: 5px; padding-bottom: 10px;font-size: 14px; font-weight: bold;}
+		.divider {height: 10px;clear: both;}
+		.innerCard {background: #fff;}
+		.videotitle {padding-bottom: 4px;padding-left: 5px;}
+		.tvshow_row {height: 137px;}
+		.tvshow_row .innerCard{text-align: left;position: relative;}
+		.videosubtitle {font-size: 10px; color: #909090;padding-left: 5px;padding-bottom: 5px;}
+		.update {position: absolute; bottom: 45px; margin-left: 5px; color: #fff;}
+		.card_hover {background: #0f0;}
+		/* 图片轮播样式 */
+		.pagination {position: absolute; z-index: 20; right: 10px; bottom: 10px; }
+		.swiper-pagination-switch {display: inline-block; width: 8px; height: 8px; border-radius: 8px; background: #555; margin-right: 5px; opacity: 0.8; border: 1px solid #fff; cursor: pointer; }
+		.swiper-active-switch {background: #fff; }
+
+
+		.swipe {
+			width: 100%;
+	        background-color: #fff;
+	        overflow: hidden;
+	        position: relative;
+	        padding-bottom: 10px;
+	    }
+	    .swipe-wrap {
+	        overflow: hidden;
+	        position: relative;
+	    }
+	    .swipe-wrap .swipe-box {
+	        float: left;
+	        width: 100%;
+	        position: relative;
+	    }
+		.swipe-box img{
+			width:100%;
+		}
+		.swipe .title-box {
+			width:100%;
+			position: relative;
+		}
+		.swipe .title-box-ul{
+			text-align: right;
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			padding-right: 10px;
+		}
+		.swipe .title-box li {
+			display: inline-block;
+			width: 10px;
+			height: 10px;
+			border-radius: 10px;
+			background: #e5e5e5;
+			box-shadow: inset 0 1px 3px black,0 0 1px 1px #f2f2f2;
+			margin: 0 2px;
+			cursor: pointer;
+		}
+		.swipe .title-box li.active{
+			background-color: #6ab494;
+			background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#1293dc),color-stop(100%,#0f6297));
+			background-image: -webkit-linear-gradient(top,#6ab494,#0f6297);
+			background-image: -moz-linear-gradient(top,#6ab494,#0f6297);
+			background-image: -ms-linear-gradient(top,#6ab494,#0f6297);
+			background-image: -o-linear-gradient(top,#6ab494,#0f6297);
+			background-image: linear-gradient(top,#6ab494,#0f6297);
+		}
+	</style>
+</head>
+<body>
+	<div id="swipe" class="swipe">
+		<div class="swipe-wrap">
+			<div class="swipe-box"> 
+				<img src="../image/api_2.png" alt="">
+			</div>
+			<div class="swipe-box">
+				<img src="../image/api_3.png" alt="">
+			</div>
+			<div class="swipe-box">
+				<img src="../image/api_4.png" alt="">
+			</div>
+		</div>
+		<div class="title-box">
+            <ul class="title-box-ul">
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+	</div>
+	<div class="divider"></div>
+	<div class="subtitle">热点</div>
+	<ul class="recommand_row">
+		<li class="recommand_card" tapmod="card_hover" onclick="">
+			<div class="innerCard">
+				<img src="../image/api_1.png" alt="">
+				<div class="videotitle">林依晨订婚宴现场曝光</div>
+			</div>
+		</li>
+		<li class="recommand_card"  tapmod="card_hover" onclick="">
+			<div class="innerCard">
+				<img src="../image/api_1.png" alt="">
+				<div class="videotitle">网传张歆艺杨树鹏离婚</div>
+			</div>
+		</li>
+	</ul>
+	<ul class="recommand_row">
+		<li class="recommand_card"  tapmod="card_hover" onclick="">
+			<div class="innerCard">
+				<img src="../image/api_1.png" alt="">
+				<div class="videotitle">曝王菲全力备孕黏紧霆锋</div>
+			</div>
+		</li>
+		<li class="recommand_card" tapmod="card_hover" onclick="">
+			<div class="innerCard">
+				<img src="../image/api_1.png" alt="">
+				<div class="videotitle">向太暗示蓝洁瑛变疯真相</div>
+			</div>
+		</li>
+	</ul>
+	<div class="divider"></div>
+	<div class="subtitle">电视剧</div>
+	<ul class="tvshow_row">
+		<li class="recommand_card" tapmod="card_hover" onclick="">
+			<div class="innerCard">
+				<img src="../image/api_1.png" alt="">
+				<div class="update">更新至31集</div>
+				<div class="videotitle">北平无战事</div>
+				<div class="videosubtitle">七影帝身份成迷</div>
+			</div>
+		</li>
+		<li class="recommand_card" tapmod="card_hover" onclick="">
+			<div class="innerCard">
+				<img src="../image/api_1.png" alt="">
+				<div class="update">更新至12集</div>
+				<div class="videotitle">风中奇缘</div>
+				<div class="videosubtitle">宫廷女子不可小觑</div>
+			</div>
+		</li>
+	</ul>
+	<ul class="tvshow_row">
+		<li class="recommand_card" tapmod="card_hover" onclick="">
+			<div class="innerCard">
+				<img src="../image/api_1.png" alt="">
+				<div class="update">更新至12集</div>
+				<div class="videotitle">半路父子</div>
+				<div class="videosubtitle">张国立换儿子啦？</div>
+			</div>
+		</li>
+		<li class="recommand_card" tapmod="card_hover" onclick="">
+			<div class="innerCard">
+				<img src="../image/api_1.png" alt="">
+				<div class="update">更新至24集</div>
+				<div class="videotitle">铁血武工队传奇</div>
+				<div class="videosubtitle">武工队传奇姊妹篇</div>
+			</div>
+		</li>
+	</ul>
+	<div class="subtitle"></div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/swipe.js"></script>
+<script>
+	window.onload = function() {
+		var li = $api.domAll('.title-box-ul li');
+		var mySwiper = Swipe($api.byId('swipe'),{
+			auto:3000,
+			continuous: true,
+			callback: function(index,elem) {
+                var i = li.length;
+                while (i--) {
+                    li[i].className = '';
+                }
+                li[index].className = 'active';
+            }
+		});
+	}
+	apiready = function (){
+		api.setRefreshHeaderInfo({
+			visible: true,
+			bgColor: 'rgba(0,0,0,0)',
+			textColor: '#666',
+			textDown: '下拉刷新',
+			textUp: '释放刷新'	
+		}, function(ret, err){
+		    api.refreshHeaderLoadDone();
+		});
+	};
+</script>
+</html>

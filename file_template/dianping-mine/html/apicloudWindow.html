@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>window</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <style>
+     /* 底部切换按钮样式 */
+     ul {display: -webkit-box; display: -webkit-flex; display: flex; }
+     #footer {height: 61px; line-height: 60px; background-color: #f2f2f2;border-top: 1px solid #FAFAFA; }
+     #footer li{-webkit-box-flex: 1; -webkit-flex: 1; flex:1; height: 60px;}
+
+     /********************/
+     /* 底部按钮原始样式 */
+     /********************/
+     .bbtn01 {background: url(../image/main_index_home_normal.png) no-repeat center 4px; }
+     .bbtn02 {background: url(../image/main_index_tuan_normal.png) no-repeat center 4px; }
+     .bbtn03 {background: url(../image/main_index_search_normal.png) no-repeat center 4px; }
+     .bbtn04 {background: url(../image/main_index_my_normal.png) no-repeat center 4px; }
+     .bottom_btn {width: 99%; height: 43px;padding-top: 18px;background-position-y: 4px; background-size: 30px;  font-size: 12px; color: #A5A5A5;}
+     
+     /* 底部按钮激活样式 */
+     .activebtn0 {background: url(../image/main_index_home_pressed.png) no-repeat center 4px; }
+     .activebtn1 {background: url(../image/main_index_tuan_pressed.png) no-repeat center 4px; }
+     .activebtn2 {background: url(../image/main_index_search_pressed.png) no-repeat center 4px; }
+     .activebtn3 {background: url(../image/main_index_my_pressed.png) no-repeat center 4px; }
+     .activebtn {color:#6ab494; background-size: 30px; }
+     .bottomhover {background-color: #46494B;}
+
+     /* 本地刷新图标 */
+     #localrefresh {display:none;float: right; width: 40px; padding: 5px 10px;}
+
+    </style>
+  </head>
+  <body>
+    <div id="wrap">
+      
+      <div id="main">
+        
+      </div>
+      <div id="footer">
+        <ul>
+          <li tapmode="activebtn0 activebtn" onclick="">
+            <a class="bottom_btn bbtn01 weixin">首页</a>
+          </li>
+          <li tapmode="activebtn1 activebtn" onclick="">
+            <a class="bottom_btn bbtn02 communicate">团购</a>
+          </li>
+          <li tapmode="activebtn2 activebtn" onclick="">
+            <a class="bottom_btn bbtn03 discover">发现</a>
+          </li>
+          <li tapmode="activebtn3 activebtn" onclick="">
+            <a class="bottom_btn bbtn04 home activebtn activebtn0">我的</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="../script/api.js"></script>
+  <script type="text/javascript">
+   var main = $api.byId('main');
+   var mainPos = $api.offset(main);
+   var footer = $api.byId('footer');
+   var footerPos = $api.offset(footer);
+    apiready = function(){
+        api.setStatusBarStyle({
+        style: 'dark'
+        });
+        var main = $api.byId('main');
+        var mainPos = $api.offset(main);
+        var footer = $api.byId('footer');
+        var footerPos = $api.offset(footer);
+        api.openFrame ({
+            name: 'apicloudFrame1',
+            url: './apicloudFrame1.html',
+            rect:{
+            x:0,
+            y:0,
+            w:'auto',
+            h:api.frameHeight-footerPos.h
+            },
+            bounces: true,
+            opaque: false,
+            vScrollBarEnabled:false,
+            hScrollBarEnabled:false
+        });
+    };
+  </script>
+</html>

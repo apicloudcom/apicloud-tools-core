@@ -1,0 +1,270 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>window</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/common.css"/>
+
+    <style>
+        #firstHeader {
+            background-color: #ffffff;
+        }
+        .topbar {
+            background-color: #ffffff;
+            height: 50px;
+            border-bottom: 1px solid #DDDFE3;
+            position: relative;
+        }
+        .fl {
+            float: left;
+        }
+
+        img {
+            vertical-align: top;
+        }
+        .egret-header-box {
+            height: 50px;
+        }
+
+        .egret-img img {
+            height: 30px;
+            padding: 10px;
+        }
+
+        .egret-header-search {
+            background-color: #E5E5E5;
+            position: absolute;
+            left: 60px;
+            right: 20px;
+            height: 34px;
+            margin-top: 8px;
+            border-radius: 4px;
+        }
+
+        .egret-header-search img {
+            margin-left: 30px;
+            height: 20px;
+            margin-top: 7px;
+        }
+
+        .egret-header-search input {
+            line-height: 24px;
+            font-size: 14px;
+            padding-top: 5px;
+        }
+
+        .egret-header-search input:focus {
+            outline: none;
+        }
+
+        .egret-switchframe div {
+            width: 50%;
+            display: inline-block;
+            color: #fff;
+            background-color: #D43C33;
+        }
+
+        .egret-switchframe div:first-child {
+            border-radius: 4px 0 0 4px;
+        }
+
+        .egret-switchframe div:last-child {
+            border-radius: 0px 4px 4px 0px;
+        }
+        .titlebar {
+            display: none;
+        }
+
+        .activebar {
+            display: block;
+        }
+        ul {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+        }
+
+        #footer {
+            height: 51px;
+            background-color: #E5E5E5;
+        }
+
+        #footer li {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            flex: 1;
+            color: #323237;
+        }
+
+
+
+        /********************/
+        /* 底部按钮原始样式 */
+        /********************/
+        .bbtn01 {
+            background: url(../image/4-main_index01.png) no-repeat center 4px;
+        }
+
+        .bbtn02 {
+            background: url(../image/4-main_index02.png) no-repeat center 4px;
+        }
+
+        .bbtn03 {
+            background: url(../image/4-main_index03.png) no-repeat center 4px;
+        }
+
+        .bbtn04 {
+            background: url(../image/4-main_index04.png) no-repeat center 4px;
+        }
+
+        .bottom_btn {
+            width: 99%;
+            padding-top: 21px;
+            background-position-y: 4px;
+            background-size: 24px;
+            font-size: 10px;
+        }
+
+
+
+        .activebtn .bottom_btn{
+            color: #6ab494;
+        }
+
+        .activebtn .bbtn01 {
+            background: url(../image/4-main_index01pressed.png) no-repeat center 4px;
+            background-size: 24px;
+        }
+        .activebtn .bbtn02 {
+            background: url(../image/4-main_index02pressed.png) no-repeat center 4px;
+            background-size: 24px;
+        }
+        .activebtn .bbtn03 {
+            background: url(../image/4-main_index03pressed.png) no-repeat center 4px;
+            background-size: 24px;
+        }
+        .activebtn .bbtn04 {
+            background: url(../image/4-main_index04pressed.png) no-repeat center 4px;
+            background-size: 24px;
+        }
+
+
+        .navbar {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            position: relative;
+            height: 40px;
+            box-sizing: border-box;
+            background: #E5E5E5;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .navbar-item {
+            display: block;
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            flex: 1;
+            width: 100%;
+            line-height: 40px;
+            font-size: 16px;
+            text-align: center;
+            color: #000;
+        }
+        .navbar-item-active {
+            color: #6ab494;
+        }
+
+        #navmark {
+            position: absolute;
+            left: 0px;
+            bottom: 0px;
+            -webkit-transition: 300ms;
+            text-align: center;
+            height: 2px;
+            background-color: #D43C33;
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <!-- 第一头部 -->
+    <div id="firstHeader" class="titlebar activebar">
+        <div class="egret-header topbar normalHeader">
+            <div class="egret-header-box egret-img fl" tapmode onclick="">
+                <img src="../image/4-searchvoice.png" alt=""></div>
+            <div class="egret-header-box">
+                <div class="egret-header-search">
+                    <img src="../image/4-header_search.png" alt="">
+                    <input type="text" placeholder="搜索音乐、歌词、电台">
+                </div>
+            </div>
+        </div>
+
+        <nav class="navbar" id="firstHeaderIndex">
+            <a id="navbar-item-recommend" class="navbar-item navbar-item-active" tapmode="navbar-item-active"
+               onclick="">端api</a>
+            <a id="navbar-item-rank" class="navbar-item" tapmode="navbar-item-active"
+               onclick="">云api</a>
+            <a id="navbar-item-favorite" class="navbar-item" tapmode="navbar-item-active" onclick="">文档</a>
+            <a id="navbar-item-ranklist" class="navbar-item" tapmode="navbar-item-active" onclick="">控制台</a>
+            <mark id="navmark"></mark>
+        </nav>
+
+    </div>
+
+
+    <div id="main">
+
+    </div>
+
+    <div id="footer">
+        <ul>
+            <li tapmode="activebtn0 activebtn" class="activebtn" onclick="">
+                <a class="bottom_btn bbtn01 weixin  activebtn0">端api</a>
+            </li>
+
+            <li tapmode="activebtn1 activebtn"  onclick="">
+                <a class="bottom_btn bbtn02 communicate">云api</a>
+            </li>
+
+            <li tapmode="activebtn2 activebtn" onclick="">
+                <a class="bottom_btn bbtn03 discover">文档</a>
+            </li>
+
+            <li tapmode="activebtn3 activebtn" onclick="">
+                <a class="bottom_btn bbtn04 home">控制台</a>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+
+    apiready=function(){
+        var $header=$api.byId('firstHeader');
+        $api.fixIos7Bar($header);
+        var main=$api.byId('main');
+        var $header_h=$api.offset($header).h;
+        var main_h=$api.offset(main).h
+        // var $nav_h=$api.offset($nav).h
+        api.openFrame({
+            name:'apicloudFrame1',
+            url:'apicloudFrame1.html',
+            rect:{
+                x:0,
+                y:$header_h,
+                w:'auto',
+                h:main_h
+            }
+        })
+    }
+</script>
+</html>

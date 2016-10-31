@@ -1,0 +1,194 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>window</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <style>
+        html, body {
+            height: 100%;
+            min-width: 320px;
+        }
+        body {
+            font-size: 14px;
+        }
+        /*header*/
+        .header {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            background-color: #ffffff;
+            -webkit-box-pack: center;
+            -webkit-box-align: center;
+        }
+        .header-title {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            flex: 1;
+        }
+        .header a {
+            display: block;
+            background-size: 30px;
+            padding: 20px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .header .user {
+            background-image: url("../image/user.png");
+        }
+
+        .header .logo {
+            background-size: 45px;
+            background-image: url("../image/logo.png");
+        }
+
+        /*
+            iscroll
+        */
+        #wrapper {
+            position: relative;
+            z-index: 1;
+            height: 35px;
+            width: 90%;
+            overflow: hidden;
+            -ms-touch-action: none;
+
+        }
+
+        #scroller {
+            position: absolute;
+            z-index: 1;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            width: 200%;
+            -webkit-transform: translateZ(0);
+            -moz-transform: translateZ(0);
+            -ms-transform: translateZ(0);
+            -o-transform: translateZ(0);
+            transform: translateZ(0);
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-text-size-adjust: none;
+            -moz-text-size-adjust: none;
+            -ms-text-size-adjust: none;
+            -o-text-size-adjust: none;
+            text-size-adjust: none;
+        }
+
+        #scroller ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+        }
+
+        #scroller li {
+            width: 10%;
+            line-height: 35px;
+            font-size: 14px;
+            overflow: hidden;
+            text-align: center;
+            color: #323237;
+        }
+
+        /*iscroll*/
+
+        .nav_active {
+            color: #6ab494 !important;
+            font-size: 16px !important;
+        }
+
+        nav {
+            width: 100%;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            background-color: #F6F6F6;
+        }
+        .arrow_down {
+            display: block;
+            background-size: 15px;
+            background-repeat: no-repeat;
+            background-position: center;
+            padding: 15px;
+            background-image: url('../image/nav_arrow.png');
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            flex: 1;
+            -webkit-transform: rotate(180deg);
+            -webkit-transition: All .5s ease;
+        }
+
+
+
+    </style>
+</head>
+<body>
+<header>
+    <div class="header">
+        <a tapmode="" onclick=""></a>
+        <div class="header-title">
+            <a class="logo" tapmode=""></a>
+        </div>
+        <a class="user" tapmode="" onclick=""></a>
+    </div>
+</header>
+<nav>
+    <div id="wrapper">
+        <div id="scroller">
+            <ul>
+                <li class="nav_active" tapmode="" onclick="">云api</li>
+                <li class="" tapmode="" onclick="">端api</li>
+                <li class="" tapmode="" onclick="">开发</li>
+                <li class="" tapmode="" onclick="">价格</li>
+                <li class="" tapmode="" onclick="">文档</li>
+                <li class="" tapmode="" onclick="">社区</li>
+                <li class="" tapmode="" onclick="">云服务</li>
+                <li class="" tapmode="" onclick="">培训</li>
+                <li class="" tapmode="" onclick="">视频</li>
+                <li class="" tapmode="" onclick="">下载</li>
+            </ul>
+        </div>
+    </div>
+    <a class="arrow_down" onclick="" tapmode=""></a>
+</nav>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/iscroll.js"></script>
+<script>
+    var myScroll;
+    function loaded() {
+        myScroll = new IScroll('#wrapper', {
+            eventPassthrough: true,
+            scrollX: true,
+            scrollY: false,
+            preventDefault: false
+        });
+    }
+    loaded();
+
+    apiready=function(){
+        var $header=$api.dom('.header');
+        $api.fixIos7Bar($header);
+        var $nav=$api.byId('wrapper');
+        var $header_h=$api.offset($header).h
+        var $nav_h=$api.offset($nav).h
+        api.openFrame({
+            name:'apicloudFrame1',
+            url:'apicloudFrame1.html',
+            rect:{
+                x:0,
+                y:$header_h+$nav_h,
+                w:'auto',
+                h:'auto'
+            }
+        })
+    }
+</script>
+</body>
+</html>

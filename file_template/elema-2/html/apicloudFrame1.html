@@ -1,0 +1,409 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>frame</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <style>
+        html, body {
+            height: 100%;
+            background-color: #eee;
+        }
+        .h10 {
+            height: 10px;
+        }
+        /* 两列样式 */
+        .row {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+        }
+        .col {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            flex: 1;
+        }
+
+        .section2 .col {
+            background-color: #fff;
+        }
+
+        .section2 .col:first-child {
+            border-bottom: 1px solid #d2d2d2;
+            border-right: 1px solid #d2d2d2;
+        }
+
+        .section2 .col:last-child {
+            border-bottom: 1px solid #d2d2d2;
+        }
+
+        /* 条目总体样式 */
+        .item {
+            display: table;
+            height: 70px;
+            width: 100%;
+        }
+
+        .item .itemlogo, .item .itemshelf {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .item .itemlogo {
+            width: 70px;
+        }
+
+        .item .itemlogo img {
+            margin-left: 10px;
+            width: 40px;
+        }
+
+        .item .itemshelf .shelfinfo01 {
+            font-size: 20px;
+            color: #AFAFAF;
+        }
+
+        /* 条目特例 */
+        .shelf2 .userlogo img {
+            width: 50px;
+        }
+
+        .favorable .itemshelf .shelfinfo01 {
+            font-size: 16px;
+            color: #F97B02;
+        }
+
+        .favorable .itemshelf .shelfinfo02 {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .nearby .itemshelf .shelfinfo01 {
+            font-size: 16px;
+            color: #4CAD35;
+        }
+
+        .nearby .itemshelf .shelfinfo02 {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        /* 第三部分 */
+        .section3 .item {
+            background-color: #fff;
+            position: relative;
+            border-bottom: 1px solid #d3d3d3;
+        }
+
+        .section3 .item .itemlogo {
+            position: absolute;
+            top: 10px;
+        }
+
+        .section3 .itemshelf {
+            margin-left: 70px;
+            display: block;
+        }
+
+        .section3 .item .userlogo img {
+            width: 40px;
+            padding: 2px;
+            border: 1px solid #e7e7e7;
+            border-radius: 2px;
+        }
+
+        .section3 .itemshelf .shelfinfo01 {
+            color: #000;
+            font-size: 16px;
+            line-height: 18px;
+            margin-top: 10px;
+        }
+
+        .section3 .itemshelf .ordering {
+            color: #fff;
+            font-size: 12px;
+            background-color: #5bb06c;
+            padding: 2px 4px;
+            display: inline-block;
+        }
+
+        .section3 .itemshelf .shelfinfo03 {
+            color: #999;
+            font-size: 12px;
+            margin-right: 10px;
+            border-bottom: 1px dotted #666;
+            padding: 10px 0;
+        }
+
+        .section3 .style2 .itemshelf .shelfinfo03 {
+            color: #999;
+            font-size: 12px;
+            margin-right: 10px;
+            border-bottom: 0;
+            padding: 10px 0;
+        }
+
+        .section3 .itemshelf .staring {
+            color: #999;
+            font-size: 12px;
+            line-height: 14px;
+            margin-top: 5px;
+        }
+
+        .section3 .itemshelf .staring img {
+            height: 12px;
+        }
+
+        .section3 .itemshelf .shelfinfo04 {
+            color: #999;
+            font-size: 12px;
+            padding: 10px 0;
+        }
+
+        .section3 .itemshelf .shelfinfo05 {
+            color: #999;
+            font-size: 12px;
+            padding: 10px 0 0 0;
+        }
+
+        /* 标题栏小图标 */
+        .section3 .itemshelf .shelfinfo01 .pei {
+            color: #fff;
+            font-size: 12px;
+            background-color: #82782f;
+            margin-left: 5px;
+            padding: 1px;
+            border-radius: 3px;
+        }
+
+        .section3 .itemshelf .shelfinfo01 .ticket {
+            color: #fff;
+            font-size: 12px;
+            background-color: #3585b7;
+            margin-left: 5px;
+            padding: 2px;
+            border-radius: 3px;
+        }
+
+        .section3 .itemshelf .shelfinfo01 .fu {
+            color: #fff;
+            font-size: 12px;
+            background-color: #e5322d;
+            margin-left: 5px;
+            padding: 2px;
+            border-radius: 3px;
+        }
+
+        .section3 .itemshelf .shelfinfo01 .compensate {
+            color: #fff;
+            font-size: 12px;
+            background-color: #2768ba;
+            margin-left: 5px;
+            padding: 2px;
+            border-radius: 3px;
+        }
+
+        .section3 .itemshelf .shelfinfo01 .new {
+            color: #fff;
+            font-size: 12px;
+            background-color: #e5322d;
+            margin-left: 5px;
+            padding: 2px;
+            border-radius: 3px;
+        }
+
+        .section3 .itemshelf .shelfinfo04 .jian {
+            color: #fff;
+            font-size: 12px;
+            background-color: #cd22e2;
+            padding: 1px;
+            border-radius: 3px;
+            margin-right: 5px;
+        }
+
+        .section3 .itemshelf .shelfinfo05 .quatity {
+            color: #fff;
+            font-size: 12px;
+            background-color: #dc0414;
+            padding: 1px;
+            border-radius: 3px;
+            margin-right: 5px;
+        }
+
+
+
+        /*slide*/
+        .swipe {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .swipe-wrap {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .swipe-wrap > div {
+            float: left;
+            width: 100%;
+            position: relative;
+        }
+
+        .swipe-wrap > div {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .swipe-wrap img {
+            width: 100%;
+            height: auto;
+            max-height: 240px;
+            min-height: 132px;
+            min-width: 320px;
+            max-width: 640px;
+        }
+
+        #slide {
+            margin: 0 auto;
+            position: relative;
+        }
+
+        #pointer {
+            position: absolute;
+            bottom: 12px;
+            overflow: hidden;
+            width: 100%;
+            text-align: center;
+        }
+
+        #pointer a {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 6px;
+            margin-right: 4px;
+            background-color: #FFFFFF;
+        }
+
+        #pointer a.active {
+            background-color: #999999;
+        }
+
+        /*slide*/
+    </style>
+</head>
+<body>
+<div id='slide' class='swipe'>
+    <div class='swipe-wrap' id="banner-content">
+        <div onclick="" tapmode="">
+            <img src="../image/45.png"/>
+        </div>
+        <div onclick="" tapmode="">
+            <img src="../image/46.png"/>
+        </div>
+        <div onclick="" tapmode="">
+            <img src="../image/46.png"/>
+        </div>
+        <div onclick="" tapmode="">
+            <img src="../image/46.png"/>
+        </div>
+        <div onclick="" tapmode="">
+            <img src="../image/46.png"/>
+        </div>
+    </div>
+    <div id="pointer">
+        <a class="active"></a>
+        <a></a>
+        <a></a>
+        <a></a>
+        <a></a>
+    </div>
+</div>
+
+<div class="row section2">
+    <div class="col">
+        <div class="item shelf2 favorable" tapmode="itemhover" onclick="">
+            <div class="itemlogo userlogo"><img src="../image/96.png" alt=""></div>
+            <div class="itemshelf">
+                <div class="shelfinfo01">优惠活动</div>
+                <div class="shelfinfo02">赠饮,打折应有尽有</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="item shelf2 nearby" tapmode="itemhover" onclick="">
+            <div class="itemlogo userlogo"><img src="../image/99.png" alt=""></div>
+            <div class="itemshelf">
+                <div class="shelfinfo01">附近团购</div>
+                <div class="shelfinfo02">查看附近团购</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 第三部分 -->
+<!-- 如何复用listitem，1.最简单的样式不变，直接复制  2.复制以后修改其中某一行的样式，最外层用div包裹给予新class，即可隔离原有的样式 -->
+<div class="h10"></div>
+<div class="section3">
+    <div class="item style1" tapmode="itemhover" onclick="">
+        <div class="itemlogo userlogo"><img src="../image/100.png" alt=""></div>
+        <div class="itemshelf">
+            <div class="shelfinfo01">【连锁】丽华快餐<span class="ticket">票</span><span class="pei">配</span></div>
+            <div class="shelfinfo02 ordering">接受预定中</div>
+            <div class="shelfinfo03">月售37307单 / 0元起送 / 34分钟</div>
+            <div class="shelfinfo04"><span class="jian">减</span>满20元减13元</div>
+
+        </div>
+    </div>
+    <div class="item style2" tapmode="itemhover" onclick="">
+        <div class="itemlogo userlogo"><img src="../image/97.png" alt=""></div>
+        <div class="itemshelf">
+            <div class="shelfinfo01">【连锁】宏状元<span class="ticket">票</span><span class="pei">配</span></div>
+            <div class="shelfinfo02 staring"><img src="../image/star_45.png" alt="">（2117）</div>
+            <div class="shelfinfo03">月售754单 / 35元起送 / 45分钟</div>
+
+        </div>
+    </div>
+    <div class="item style1" tapmode="itemhover" onclick="">
+        <div class="itemlogo userlogo"><img src="../image/98.png" alt=""></div>
+        <div class="itemshelf">
+            <div class="shelfinfo01">【连锁】久久丫<span class="fu">付</span><span class="pei">配</span></div>
+            <div class="shelfinfo02 staring"><img src="../image/star_45.png" alt="">（604）</div>
+            <div class="shelfinfo03">月售753单 / 30元起送 / 45分钟</div>
+            <div class="shelfinfo04"><span class="jian">减</span>满20元减10元，在线支付再减3元</div>
+
+        </div>
+    </div>
+
+
+</div>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/swipe.js"></script>
+<script>
+
+    function initSlide() {
+        var $pointer = $api.byId('pointer');
+        window.mySlide = Swipe(slide, {
+            continuous: true,
+            disableScroll: true,
+            stopPropagation: true,
+            callback: function (index, element) {
+                console.log();
+                var $actA = $api.dom($pointer, 'a.active');
+                $api.removeCls($actA, 'active');
+                $api.addCls($api.eq($pointer, index + 1), 'active');
+            },
+            transitionEnd: function (index, element) {
+            }
+        });
+    }
+    initSlide();
+</script>
+</body>
+
+</html>

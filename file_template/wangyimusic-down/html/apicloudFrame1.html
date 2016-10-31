@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="copyright" content="www.apicloud.com" />
+<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+<title>frame</title>
+<link rel="stylesheet" type="text/css" href="../css/api.css" />
+<style>
+html,body {min-height: 100%;background-color: #f3f3f3;height: 100%;}
+.fr {float: right;}
+.fl {float: left;}
+.mt5 {margin-top: 5px;}
+.mt10 {margin-top: 10px;}
+.mt15 {margin-top: 15px;}
+.mt20 {margin-top: 20px;}
+.ml5 {margin-left: 0.5em;}
+.mr5 {margin-right: 0.5em;}
+.hdivider {width: 100%; height: 1px;background-color: #e0e0e0;}
+.br {border-right: 1px solid #e0e0e0;}
+.pl10 {padding-left: 10px;}
+/* 用flex重写框架 */
+.egret-flex-item {
+	display: -webkit-box;
+	-webkit-box-align:center;
+	height: 3em;
+}
+/* 左部logo */
+.egret-flex-item-logo {max-width: 50px; min-width: 50px; margin-left: 0.5em; margin-right: 0.2em;-webkit-box-flex: 1;-webkit-flex: 1;flex: 1; -webkit-box-align: center;text-align: center;}
+.egret-flex-item-logo img {height: 2em; width: 2em; -webkit-box-align: center;vertical-align: top;}
+
+.egret-flex-item-shelf {overflow: hidden; -webkit-box-flex:2;-webkit-flex: 2;flex: 2;
+	-webkit-box-align: center;}
+.egret-flex-item-shelf div {text-overflow: ellipsis; white-space: nowrap; overflow: hidden;}
+.egret-flex-item-shelf .egret-flex-item-shelf01 {font-size: 1.1em;}
+.egret-flex-item-shelf .egret-flex-item-shelf02 {font-size: 0.6em; color: #666; margin-top: 0.6em;}
+.egret-flex-item-shelf .egret-flex-item-redclassify {color: #E03F40; border: 1px solid #E03F40; font-size: inherit; padding: 0.1em; border-radius: 1px; margin-right: 5px;}
+
+/* 右部箭头 */
+.egret-flex-item-arrow {-webkit-box-flex: 1;-webkit-flex: 1;flex: 1;max-width: 10px; min-width: 10px; 
+	margin-right: 15px;}
+.egret-flex-item-arrow img {width: 100%; max-width: 10px;}
+
+/* 播放全部*/
+.playall .egret-flex-item-arrow {-webkit-box-flex: 1; -webkit-flex: 1;flex: 1;max-width: 2.0em; min-width: 2.0em; margin-right: 15px;}
+.playall .egret-flex-item-arrow img {max-width: none;}
+.playall .egret-flex-item-logo img {width: 1.5em;height: 1.5em;}
+
+/* egret item 抽象右部 */
+.egret-flex-item-abright {
+	display: -webkit-box;
+	-webkit-box-flex: 1; 
+	-webkit-flex: 1;
+	flex: 1;border-bottom: 1px solid #e0e0e0;
+	 -webkit-box-align: center;height: 4em;}
+.isolateitem-bottom {border-bottom: 1px solid #e0e0e0; }
+/* musiclist 特殊样式 */
+.musiclist-item {height: 4em;}
+.musiclist-item .egret-flex-item-logo {text-align: center;font-size: 1.2em;color: #999999;}
+.musiclist-item .egret-flex-item-shelf .egret-flex-item-shelf01 {font-size: 1em;}
+.musiclist-item .egret-flex-item-arrow {max-width: 24px; min-width: 24px;}
+.musiclist-item .egret-flex-item-arrow img {max-width: none;}
+.isolateitem-bottom {border-bottom: 1px solid #e0e0e0; }
+
+.allplayhover {background-color: #e2e2e2;}
+
+/* 头部背景 */
+.musiclistprofile {height: 9em;}
+.egret-flex-item .topheaderbg {width: 100%; height: 100%; vertical-align: top;}
+.egret-flex-item .topheaderlogo {position: absolute;width: 50px;height: 50px;top: 30px;left: 20px;}
+.egret-flex-item .topheadercollect {position: absolute; width: 50px; height: 50px; top: 70px; right: 20px; background-color: #76110B; border-radius: 25px;}
+.egret-flex-item .topheadercollect .border {width: 100%;}
+.egret-flex-item .topheadercollect .inside {position: absolute;width: 100%;bottom: 0;}
+.egret-flex-item .info {position: absolute; left: 20px; top: 110px; font-size: 0.6em; color: #fff;}
+
+/* 搜索 */
+.searchbar {height: 40px;background: #E7E8EC;}
+.searchbar .guncotton {margin: 0 10px;height: 40px; line-height: 40px;}
+.searchbar .guncotton input {width: 100%; font-size: 0.8em; line-height: 2em; height: 2em; outline: none; background-color: #fff; padding-left: 10px; border-radius: 5px; box-sizing: border-box;}
+</style>
+</head>
+<body>
+<div class="searchbar">
+	<div class="guncotton">
+		<input type="text" placeholder="搜索下载歌曲">
+	</div>
+</div>
+<!-- 2 播放全部 -->
+<div class="egret-flex-item isolateitem-bottom playall" tapmode="allplayhover" onclick="">
+	<div class="egret-flex-item-logo">
+		<img src="../image/musiclistplay.png" alt="" class="">
+	</div>
+	<div class="egret-flex-item-shelf">
+		<div class="egret-flex-item-shelf01">播放全部</div>
+	</div>
+</div>
+
+<!-- 3  -->
+<div class="egret-flex-item musiclist-item">
+	<div class="egret-flex-item-abright">
+		<div class="egret-flex-item-shelf pl10">
+			<div class="egret-flex-item-shelf01">休息</div>
+			<div class="egret-flex-item-shelf02">3.1M 以莉.高露 - 轻快的生活</div>
+		</div>
+		<div class="egret-flex-item-arrow">
+			<img src="../image/musiclistmore.png" alt="" class="toobarimg" onclick="" tapmode>
+		</div>
+	</div>
+</div>
+
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+apiready = function  () {}
+</script>
+</html>

@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>window</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <style>
+        * {
+            outline: 0;
+        }
+        .city p, .searchWrap {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -webkit-justify-content: center;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        header {
+            border-bottom: 1px solid #E5E5E5;
+        }
+
+        .header {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -webkit-justify-content: center;
+            align-items: center;
+            justify-content: center;
+            background-color: #E5E5E5;
+        }
+        .header a{
+            display: block;
+            background-size: 30px;
+            background-repeat: no-repeat;
+            background-position: center;
+            padding: 20px;
+        }
+
+        .city {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            border: 1px solid #D6D6D6;
+            height: 30px;
+            border-right: none;
+            background-color: #FFFFFF;
+        }
+
+        .header div input {
+            width: 90%;
+            border-left: 1px solid #D6D6D6;
+            height: 20px;
+            margin-left: 5px;
+            padding-left: 5px;
+            line-height: 20px;
+            border-radius: 0;
+        }
+
+        .header div a {
+            padding: 26px 15px;
+            background-size: 20px;
+            background-position: center;
+        }
+
+        .searchWrap {
+            height: 30px;
+            border: 1px solid #D6D6D6;
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            flex: 1;
+            -webkit-box-pack: start;
+            border-left: none;
+            background-color: #FFFFFF;
+        }
+
+        .header .menu {
+            background-image: url("../image/menu.png");
+        }
+
+        .phone {
+            background-image: url("../image/phone.png");
+        }
+
+        .location {
+            width: 30px;
+            padding-left: 20px;
+            background-position: left center;
+            background-repeat: no-repeat no-repeat;
+            background-size: 20px;
+            background-image: url("../image/location.png");
+        }
+
+        .close {
+            background-image: url("../image/close.png");
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="index header ">
+        <a class="menu" tapmode="" onclick=""></a>
+        <a class="close" style="display:none" tapmode="" onclick=""></a>
+
+        <div class="city location" onclick="" tapmode="">
+            <p id="city" onclick="">北京</p>
+        </div>
+        <div class="searchWrap" onclick="" tapmode="">
+            <input type="text" placeholder="APICloud"/>
+        </div>
+        <a class="phone " tapmode="" onclick=""></a>
+    </div>
+</header>
+<script type="text/javascript" src="../script/api.js"></script>
+<script>
+    apiready=function(){
+        var $header=$api.dom('.header');
+        $api.fixIos7Bar($header);
+        var $header_h=$api.offset($header).h;
+        api.openFrame({
+            name:'apicloudFrame1',
+            url:'apicloudFrame1.html',
+            rect:{
+                x:0,
+                y:$header_h,
+                w:'auto',
+                h:'auto'
+            }
+        })
+    }
+</script>
+</body>
+</html>

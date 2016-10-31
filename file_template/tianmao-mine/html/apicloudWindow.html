@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>window</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <style>
+        #main .title{
+            font-size: 0.8em;
+            text-indent: 1em;
+        }
+        #main .brief{
+            font-size: 0.6em;
+            text-indent: 1.3em;
+        }
+        #footer{
+            height: 50px; line-height: 50px;
+            background: url(../image/tmall_bottom_bg.9.png) left bottom repeat-x;
+            background-size: 11px 50px;
+            background-color: #81a9c3; 
+            width: 100%;
+            text-align: center;
+        }
+        #footer h5{
+            color: white;
+        }
+        #footer_list{
+            height: 50px;
+            width: 100%;
+            position: relative;
+            background-color: #f2f2f2;
+        }
+        #footer_list .list_li{
+            float: left;
+            height: 50px;
+            width: 20%;
+            position: relative;
+        }
+        #footer_list .list_bar{
+            position: absolute;
+            bottom: 0;
+            left: 6.4%;
+            height: 2px;
+            width: 7.5%;
+            background-color: #6ab494;
+            -webkit-transform: translateX(0%);
+                    transform: translateX(0%);
+            -webkit-transition: all .25s ease;
+                    transition: all .25s ease;
+
+        }
+        #footer_list .home{
+            background: url(../image/icon_tab_home_nomal.png) center 6px no-repeat;
+            background-size: 22px 21px;
+        }
+        #footer_list .home.active{
+            background: url(../image/icon_tab_home_selected.png) center 6px no-repeat;
+            background-size: 22px 21px;
+        }
+        #footer_list .follow{
+            background: url(../image/icon_tab_featured_normal.png) center 6px no-repeat;
+            background-size: 22px 21px;
+        }
+        #footer_list .follow.active{
+            background: url(../image/icon_tab_featured_selected.png) center 6px no-repeat;
+            background-size: 22px 21px;
+        }
+        #footer_list .fun{
+            background: url(../image/icon_tab_fun_normal.png) center 6px no-repeat;
+            background-size: 26px 21px;
+        }
+        #footer_list .fun.active{
+            background: url(../image/icon_tab_fun_selected.png) center 6px no-repeat;
+            background-size: 26px 21px;
+        }
+        #footer_list .cart{
+            background: url(../image/icon_tab_cart_normal.png) center 6px no-repeat;
+            background-size: 22px 21px;
+        }
+        #footer_list .cart.active{
+            background: url(../image/icon_tab_cart_selected.png) center 6px no-repeat;
+            background-size: 22px 21px;
+        }
+        #footer_list .profile{
+            background: url(../image/icon_tab_featured_normal.png) center 6px no-repeat;
+            background-size: 22px 21px;
+        }
+        #footer_list .profile.active{
+            background: url(../image/icon_tab_featured_selected.png) center 6px no-repeat;
+            background-size: 22px 21px;
+        }
+        #footer_list .list_li .text{
+            position: absolute;
+            width: 100%;
+            height: 1em;
+            line-height: 1em;
+            left: 0;
+            bottom: 7px;
+            color: #323237;
+            font-size: 11px;
+        }
+        #footer_list .list_li.active .text{
+            color: #6ab494;
+        }
+    </style>
+</head>
+<body ontouchstart="">
+    <div id="wrap">
+        <div id="header"></div>
+        <div id="main">
+                
+        </div>
+        <div id="footer">
+            <ul id="footer_list">
+                <li class="list_li home" onclick="changeIndexFrame(0);" tapmode>
+                    <span class="text">天猫</span>
+                </li>
+                <li class="list_li follow" onclick="changeIndexFrame(1);" tapmode>
+                    <span class="text">关注</span>
+                </li>
+                <li class="list_li fun" onclick="changeIndexFrame(2);" tapmode>
+                    <span class="text">范儿</span>
+                </li>
+                <li class="list_li cart" onclick="changeIndexFrame(3);" tapmode>
+                    <span class="text">购物车</span>
+                </li>
+                <li class="list_li profile active" onclick="changeIndexFrame(4);" tapmode>
+                    <span class="text">我</span>
+                </li>
+                <li class="list_bar">
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+    var aFooterList = $api.domAll('#footer_list .list_li');
+    var listBar = $api.dom('#footer_list .list_bar');
+    var frameJson = {
+        '0': 'apicloudFrame1',
+        '1': 'apicloudFrame1',
+        '2': 'apicloudFrame1',
+        '3': 'apicloudFrame1',
+        '4': 'apicloudFrame1'
+    };
+    var changeIndexFrame = function(index){
+        for (var i = 0; i < 5; i++) {
+            if (i == index) {
+                $api.addCls(aFooterList[index],'active');
+            } else{
+                $api.removeCls(aFooterList[i],'active');
+            }
+        };
+        listBar.style.webkitTransform = 'translateX('+index*266.5+'%)';
+        openIndexFrames(index);
+    };
+    apiready = function(){
+        api.setWinAttr({
+            bounces: false
+        });
+        var main = $api.byId('main');
+        var mainPos = $api.offset(main);
+        var footer = $api.byId('footer');
+        var footerPos = $api.offset(footer);
+
+        window.openIndexFrames = function(index){
+            api.openFrame({
+                name: frameJson[index],
+                url: frameJson[index]+'.html',
+                bounces: true,
+                rect: {
+                    x: 0,
+                    y: 0,
+                    w: 'auto',
+                    h: mainPos.h
+                }
+            });
+        };
+        changeIndexFrame(4);
+    };
+</script>
+</html>

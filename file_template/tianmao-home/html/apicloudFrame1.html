@@ -1,0 +1,770 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>frame</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <style>
+    html,body{
+        background-color: #e5e5e5;
+    }
+    .sp1_3,.sp2_3,.sp1_3_big,.sp1_2,.sp1{
+        margin-left: 0.75em;
+        float: left;
+    }
+    .clearfix:after{
+        content: '';
+        display: block;
+        clear: both;
+    }
+    #main{
+        padding: 0;
+    }
+
+/*导航栏4个按钮*/
+    #nav_top{
+        padding-top: 130px;
+        margin: 0 0.6em 1em 0.6em;
+    }
+    #nav_top .nav_top_list{
+        background-color: #e5e5e5;
+        overflow: hidden;
+    }
+
+    #nav_top .nav_top_li{
+        background-color: #e5e5e5;
+        border-radius: 3px;
+        float: left;
+        width: 25%;
+    }
+    #nav_top .nav_top_li:active{
+        background-color: #999999;
+    }
+    #nav_top .text{
+        float: left;
+        text-indent: 6px;
+        color: #58616D;
+        font-size: 0.75em;
+        line-height: 2em;
+    }
+    #nav_top .nav_top_li .icon{
+        float: left;
+        margin-left: 7px;
+        width: 1.5em;
+        height: 1.5em;
+    }
+    #nav_top .score .icon{
+        background: url(../image/index_icon_score.png) center center no-repeat;
+        background-size: 100% 100%;
+    }
+    #nav_top .recharge .icon{
+        background: url(../image/index_icon_recharge.png) center center no-repeat;
+        background-size: 100% 100%;
+    }
+    #nav_top .lottery .icon{
+        background: url(../image/index_icon_lottery.png) center center no-repeat;
+        background-size: 100% 100%;
+    }
+    #nav_top .ju .icon{
+        background: url(../image/index_icon_ju.png) center center no-repeat;
+        background-size: 100% 100%;
+    }
+/*导航栏4个按钮 end*/
+/* home页具体内容 */
+    .headlines{
+        width: 100%;
+        padding-top: 1em;
+        background-color: #FFFFFF;
+    }
+    .container .title{
+        text-indent: 13px;
+        color: #58616D;
+        width: 100%;
+        display: block;
+        overflow:hidden;
+        white-space:nowrap;
+        text-overflow:ellipsis;
+    }
+    .container .brief{
+        text-indent: 13px;
+        font-size: 0.7em;
+        color: #BDBDBD;
+        width: 100%;
+        margin: 6px 0 3px 0;
+        display: block;
+        overflow:hidden;
+        white-space:nowrap;
+        text-overflow:ellipsis;
+    }
+    .headlines img{
+        width: 100%;
+        display: block;
+    }
+    .brand{
+        background-color: #FFF;
+
+    }
+    .brand:after{
+        clear: both;
+        content: '';
+        display: block;
+    }
+    .brand .brand_left{
+        float: left;
+        width: 46%;
+        padding-top: 1em;
+    }
+    .brand .brand_left img{
+        width: 100%;
+        display: block;
+    }
+    .brand .brand_right{
+        float: left;
+        width: 54%;
+        padding-top: 1em;
+    }
+    .brand .brand_right .title{
+        text-indent: 0;
+        width: 100%;
+        display: block;
+    }
+    .brand .brand_right .brief{
+        text-indent: 0;
+        width: 100%;
+        color: #58616D;
+        display: block;
+    }
+    .brand .brand_right .img_box{
+        width: 100%;
+    }
+    .brand .brand_right .img_box:after{
+        content: '';
+        display: block;
+        clear: both;
+    }
+    /*.brand .brand_right .img_box img{
+        width: 100%;
+    }*/
+    .brand .brand_right .img_box img{
+        width: 84%;
+        float: left;
+        margin: 2px;
+    }
+    .count_down{
+        background-color: #FFF;
+        margin-top: 0.75em;
+        margin-bottom: 0.75em;
+    }
+    .count_down:after{
+        content: '';
+        display: block;
+        clear: both;
+    }
+    .count_down .left{
+        float: left;
+        width: 33%;
+        padding-top: 1em;
+    }
+    .count_down .center{
+        float: left;
+        width: 33%;
+    }
+    .count_down .center img{
+        width: 100%;
+        display: block;
+    }
+    .count_down .right{
+        float: left;
+        width: 33%;
+        padding-top: 1.5em;
+    }
+    .count_down .right .title{
+        font-size: 0.7em;
+        color: #58616D;
+        display: block;
+    }
+
+    #counting_box{
+        padding-left: 13px;
+    }
+    #counting_box li{
+        float: left;
+        font-size: 0.7em;
+    }
+    #counting_box .t{
+        background-color: #333333;
+        border-radius: 2px;
+        color: #FFF;
+        width: 0.75em;
+        height: 1.3em;
+        line-height: 1.4em;
+        text-align: center;
+        margin-right: 1px;
+        text-decoration: line-through;
+    }
+/*会场*/
+    .venue{
+        width: 100%;
+        padding-top: 1em;
+        background-color: #FFFFFF;
+    }
+    .venue img{
+        width: 100%;
+        display: block;
+    }
+    .venue_big_box{
+        width: 100%;
+        padding-bottom: 1em;
+        overflow-x: scroll;
+        overflow-y: hidden;
+    }
+    .venue_big_inner{
+
+    }
+    .venue_big{
+        padding-top: 1em;
+        background-color: #FFFFFF;
+    }
+    .venue_big.v1{
+        margin-left: 0;
+    }
+    .venue_big img{
+        width: 100%;
+        display: block;
+    }
+/*会场end*/
+/*中间大广告*/
+    .big_ads{
+        margin-top: 0.75em;
+        margin-bottom: 0.75em;
+    }
+    .big_ads.last{
+        margin-top: 0;
+    }
+/*中间大广告end*/
+/*行业精选*/
+    .industry_select{
+
+    }
+    .industry{
+        background-color: #FFF;
+        margin-bottom: 0.75em;
+    }
+    .reload_header{
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+    }
+    .reload_header .title{
+        float: left;
+        width: auto;
+    }
+    .reload_header .reload{
+        float: right;
+        color: #BDBDBD;
+        border-radius: 3px;
+        text-align: center;
+        width: 5em;
+        font-size: 0.8em;
+        height: 1.5em;
+        line-height: 1.4em;
+
+    }
+    .reload_header .reload .reload_icon{
+        width: 1em;
+        height: 1em;
+        display: inline-block;
+        background: url(../image/tm_home_refresh_small_normal.png) center center no-repeat;
+        background-size: 100% 100%;
+        vertical-align: baseline;
+    }
+    .reload_header .reload:active{
+        background-color: #666666;
+    }
+    .reload_header .reload:active .reload_icon{
+        background: url(../image/tm_home_refresh_small_press.png) center center no-repeat;
+        background-size: 100% 100%;
+    }
+    .industry_left{
+        padding-top: 1em;
+        width: 50%;
+        float: left;
+    }
+    .industry_right{
+        width: 50%;
+        float: left;
+    }
+    .industry_right img{
+        width: 100%;
+        display: block;
+    }
+/*行业精选end*/
+/* 更多惊喜 */
+    .more{
+
+    }
+    .more_unit{
+        background-color: #FFF;
+        margin-bottom: 0.75em;
+    }
+    .more_unit .img_box{
+        margin: 0.75em auto;
+    }
+    .more_unit img{
+        width: 100%;
+        display: block;
+    }
+    .more_unit .price{
+        text-indent: 0.75em;
+        color: #FF4450;
+        margin-bottom: 8px;
+    }
+/*更多惊喜 end*/
+/* home页具体内容 end */
+    /*轮播图*/
+    .swipe {
+        overflow: hidden;
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 0;
+    }
+    .swipe-wrap {
+        overflow: hidden;
+        position: relative;
+    }
+    .swipe-wrap .swipe-box {
+        float: left;
+        width: 100%;
+        position: relative;
+    }
+    .swipe-wrap img {
+        width: 100%;
+        display: block;
+    }
+    #title-box {
+        height: 30px;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        /*background-color: rgba(0,0,0,0.3);*/
+    }
+    #title-box-text {
+        color: #FFF;
+        text-align: left;
+        text-indent: 1em;
+        line-height: 30px;
+    }
+    #title-box-ul {
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding-right: 12px;
+        font-size: 1em;
+    }
+    #title-box-ul li.active {
+        background: url(../res/img/slider_dot_current.png) transparent center center no-repeat;
+        background-size: 8px 8px;
+    }
+    #title-box-ul li {
+        width: 11px;
+        height: 30px;
+        line-height: 30px;
+        float: left;
+        background: url(../res/img/slider_dot.png) transparent center center no-repeat;
+        background-size: 8px 8px;
+    }
+
+    .hidden{
+        display: none !important;
+    }
+/*轮播图 end*/
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="main"> 
+            <!-- 轮播图 -->
+            <div id='slider' class='swipe'>
+                <div class='swipe-wrap'>
+                    <div class="swipe-box" tapmode data-url="http://h5.m.taobao.com/channel/act/other/newbook.php" data-title="新书" onclick="">
+                        <img src="../image/api_1.png" alt="全球知名大牌特卖汇">
+                    </div>
+                    <div class="swipe-box" tapmode data-url="http://h5.m.taobao.com/channel/act/other/newbook.php" data-title="新书" onclick="">
+                        <img src="../image/api_2.png" alt="君御灯饰特惠日！">
+                    </div>
+                    <div class="swipe-box" tapmode data-url="http://h5.m.taobao.com/channel/act/other/newbook.php" data-title="新书" onclick="">
+                        <img src="../image/api_3.png" alt="宇宙最萌面膜专场">
+                    </div>
+                    <div class="swipe-box" tapmode data-url="http://h5.m.taobao.com/channel/act/other/newbook.php" data-title="新书" onclick="">
+                        <img src="../image/api_4.png" alt="狂欢延续，999送黄金">
+                    </div>
+                    <div class="swipe-box" tapmode data-url="http://h5.m.taobao.com/channel/act/other/newbook.php" data-title="新书" onclick="">
+                        <img src="../image/api_5.png" alt="儿童户外运动一站购">
+                    </div>
+                </div>
+                <div id="title-box">
+                    <!-- <span id="title-box-text">
+                        一周电影推荐《移动迷宫》
+                    </span> -->
+                    <ul id="title-box-ul">
+                        <li class="active"></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 轮播图 end -->
+            <!-- 上方导航栏 -->
+            <div id="nav_top">
+                <ul class="nav_top_list">
+                    <li class="nav_top_li score" tapmode data-url="http://ju.taobao.com/m/jusp/juhuasuantm/mtp.htm" data-title="聚划算" onclick="">
+                        <i class="icon"></i>
+                        <span class="text">领积分</span>
+                    </li>
+                    <li class="nav_top_li recharge" tapmode data-url="http://ju.taobao.com/m/jusp/juhuasuantm/mtp.htm" data-title="聚划算" onclick="">
+                        <i class="icon"></i>
+                        <span class="text">充值</span>
+                    </li>
+                    <li class="nav_top_li lottery" tapmode data-url="http://ju.taobao.com/m/jusp/juhuasuantm/mtp.htm" data-title="聚划算" onclick="">
+                        <i class="icon"></i>
+                        <span class="text">彩票</span>
+                    </li>
+                    <li class="nav_top_li ju" tapmode data-url="http://ju.taobao.com/m/jusp/juhuasuantm/mtp.htm" data-title="聚划算" onclick="">
+                        <i class="icon"></i>
+                        <span class="text">聚划算</span>
+                    </li>
+                </ul>
+            </div>
+            <!-- 上方导航栏 end-->
+            <!-- 下方详情 -->
+            <div class="container">
+                <div class="headlines sp1_3" tapmode data-url="http://m.tmall.com/channel/act/315/tmall-headlines_2014/11/19.php" data-title="天猫头条" onclick="">
+                    <span class="title">天猫头条</span>
+                    <span class="brief">娇俏女</span>
+                    <img src="../image/api_34.png" alt="">
+                </div>
+                <div class="brand sp2_3">
+                    <div class="brand_left" tapmode data-url="http://brand.tmall.com/mobilestreet/index.htm" data-title="品牌街" onclick="">
+                        <span class="title">品牌街</span>
+                        <span class="brief">怀念书写的乐趣</span>
+                        <img src="../image/api_34.png" alt="">
+                    </div>
+                    <div class="brand_right">
+                        <span class="title">&nbsp;</span>
+                        <span class="brief">我关注的才是大牌</span>
+                        <div class="img_box img_right">
+                            <img src="../image/api_34.png" alt="">
+                            <!-- <img src="../image/index_brand_logo_1.png" alt="" tapmode data-url="http://jeanswest.m.tmall.com" data-title="真维斯" onclick="">
+                            <img src="../image/index_brand_logo_2.png" alt="" tapmode data-url="http://cherry.m.tmall.com" data-title="cherry" onclick="">
+                            <img src="../image/index_brand_logo_3.png" alt="" tapmode data-url="http://puma.m.tmall.com" data-title="puma" onclick="">
+                            <img src="../image/index_brand_logo_4.png" alt="" tapmode data-url="http://playboy.m.tmall.com" data-title="playboy" onclick=""> -->
+                        </div>
+                        
+                    </div>                  
+                </div>
+                <div class="count_down sp1" tapmode data-url="http://page.m.tmall.com/myy/myy_cjy.html" data-title="喵一眼" onclick="">
+                    <div class="left">
+                        <span class="title">喵一眼</span>
+                        <span class="brief">精选商品限时抢购</span>
+                        <ul id="counting_box" class="clearfix">
+                            <li class="h1 t">0</li>
+                            <li class="h2 t">0</li>
+                            <li class="colon">:</li>
+                            <li class="m1 t">2</li>
+                            <li class="m2 t">5</li>
+                            <li class="colon">:</li>
+                            <li class="s1 t">0</li>
+                            <li class="s2 t">0</li>
+                        </ul>
+                    </div>
+                    <div class="center">
+                        <img src="../image/api_34.png" alt="">
+                    </div>
+                    <div class="right">
+                        <span class="title">精品大量涌入</span>
+                        <span class="brief">24小时整点更新</span>
+                    </div>
+                </div>
+                <div class="venue_big_box sp1">
+                    <div class="venue_big_inner clearfix">
+                        <div class="venue_big sp1_3_big v1" tapmode data-url="http://nvzhuang.tmall.com/market/fushi/nvzhuang_mobile.php" data-title="精品女装" onclick="">
+                            <span class="title">我的衣橱</span>
+                            <span class="brief">私人时尚衣橱</span>
+                            <img src="../image/api_34.png" alt="">
+                        </div>
+                        <div class="venue_big sp1_3_big" tapmode data-url="http://nvzhuang.tmall.com/market/fushi/nvzhuang_mobile.php" data-title="精品女装" onclick="">
+                            <span class="title">专属试用</span>
+                            <span class="brief">只属于你的试用</span>
+                            <img src="../image/api_34.png" alt="">
+                        </div>
+                        <div class="venue_big sp1_3_big" tapmode data-url="http://nvzhuang.tmall.com/market/fushi/nvzhuang_mobile.php" data-title="精品女装" onclick="">
+                            <span class="title">穿戴Style</span>
+                            <span class="brief">我的搭配经</span>
+                            <img src="../image/api_34.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="venue sp1_3" tapmode data-url="http://nvzhuang.tmall.com/market/fushi/nvzhuang_mobile.php" data-title="精品女装" onclick="">
+                    <span class="title">建材会场</span>
+                    <span class="brief">3年质保</span>
+                    <img src="../image/api_34.png" alt="">
+                </div>
+                <div class="venue sp1_3" tapmode data-url="http://nvzhuang.tmall.com/market/fushi/nvzhuang_mobile.php" data-title="精品女装" onclick="">
+                    <span class="title">居家会场</span>
+                    <span class="brief">我的梦想家</span>
+                    <img src="../image/api_34.png" alt="">
+                </div>
+                <div class="venue sp1_3" tapmode data-title="喵鲜生" data-url="http://miao.tmall.com/go/market/miao/m.php" onclick="">
+                    <span class="title">喵鲜生</span>
+                    <span class="brief">双11生鲜抄底</span>
+                    <img src="../image/api_34.png" alt="">
+                </div>
+                <img src="../image/api_5.png" alt="" class="big_ads sp1" tapmode data-url="http://h5.m.taobao.com/channel/act/other/newbook.php" data-title="新书" onclick="">
+                <div class="industry_select clearfix">
+                    <div class="sp1 reload_header">
+                        <span class="title">行业精选</span>
+                        <span class="reload">
+                            <i class="reload_icon"></i>
+                            换一组
+                        </span>
+                    </div>
+                    <!-- 行业精选 -->
+                    <div class="sp1_2 industry clearfix" tapmode data-url="http://nvzhuang.tmall.com/market/fushi/nvzhuang_mobile.php" data-title="精品女装" onclick="">
+                        <div class="industry_left">
+                            <span class="title">女装</span>
+                            <span class="brief">手机优先购</span>
+                        </div>
+                        <div class="industry_right">
+                            <img src="../image/api_20.png" alt="">
+                        </div>
+                    </div>
+                    <div class="sp1_2 industry clearfix" tapmode data-url="http://nvzhuang.tmall.com/market/fushi/nvzhuang_mobile.php" data-title="精品女装" onclick="">
+                        <div class="industry_left">
+                            <span class="title">电器城</span>
+                            <span class="brief">抢稀缺手机</span>
+                        </div>
+                        <div class="industry_right">
+                            <img src="../image/api_20.png" alt="">
+                        </div>
+                    </div>
+                    <div class="sp1_2 industry clearfix" tapmode data-url="http://nvzhuang.tmall.com/market/fushi/nvzhuang_mobile.php" data-title="精品女装" onclick="">
+                        <div class="industry_left">
+                            <span class="title">女鞋</span>
+                            <span class="brief">抢秋冬新款</span>
+                        </div>
+                        <div class="industry_right">
+                            <img src="../image/api_20.png" alt="">
+                        </div>
+                    </div>
+                    <div class="sp1_2 industry clearfix" tapmode data-url="http://nvzhuang.tmall.com/market/fushi/nvzhuang_mobile.php" data-title="精品女装" onclick="">
+                        <div class="industry_left">
+                            <span class="title">男装</span>
+                            <span class="brief">潮男搭配</span>
+                        </div>
+                        <div class="industry_right">
+                            <img src="../image/api_20.png" alt="">
+                        </div>
+                    </div>
+                    <div class="sp1_2 industry clearfix" tapmode data-url="http://nvzhuang.tmall.com/market/fushi/nvzhuang_mobile.php" data-title="精品女装" onclick="">
+                        <div class="industry_left">
+                            <span class="title">箱包</span>
+                            <span class="brief">包你满意</span>
+                        </div>
+                        <div class="industry_right">
+                            <img src="../image/api_20.png" alt="">
+                        </div>
+                    </div>
+                    <div class="sp1_2 industry clearfix" tapmode data-url="http://nvzhuang.tmall.com/market/fushi/nvzhuang_mobile.php" data-title="精品女装" onclick="">
+                        <div class="industry_left">
+                            <span class="title">男鞋</span>
+                            <span class="brief">英伦休闲季</span>
+                        </div>
+                        <div class="industry_right">
+                            <img src="../image/api_20.png" alt="">
+                        </div>
+                    </div>
+                    <div class="sp1_2 industry clearfix" tapmode data-url="http://nvzhuang.tmall.com/market/fushi/nvzhuang_mobile.php" data-title="精品女装" onclick="">
+                        <div class="industry_left">
+                            <span class="title">美妆</span>
+                            <span class="brief">免费试用</span>
+                        </div>
+                        <div class="industry_right">
+                            <img src="../image/api_20.png" alt="">
+                        </div>
+                    </div>
+                    <div class="sp1_2 industry clearfix" tapmode data-url="http://nvzhuang.tmall.com/market/fushi/nvzhuang_mobile.php" data-title="精品女装" onclick="">
+                        <div class="industry_left">
+                            <span class="title">食品</span>
+                            <span class="brief">每天免费吃</span>
+                        </div>
+                        <div class="industry_right">
+                            <img src="../image/api_20.png" alt="">
+                        </div>
+                    </div>
+                    <div class="sp1_2 industry clearfix" tapmode data-url="http://nvzhuang.tmall.com/market/fushi/nvzhuang_mobile.php" data-title="精品女装" onclick="">
+                        <div class="industry_left">
+                            <span class="title">运动</span>
+                            <span class="brief">爱运动</span>
+                        </div>
+                        <div class="industry_right">
+                            <img src="../image/api_20.png" alt="">
+                        </div>
+                    </div>
+                    <div class="sp1_2 industry clearfix" tapmode data-url="http://nvzhuang.tmall.com/market/fushi/nvzhuang_mobile.php" data-title="精品女装" onclick="">
+                        <div class="industry_left">
+                            <span class="title">居家</span>
+                            <span class="brief">10点秒杀</span>
+                        </div>
+                        <div class="industry_right">
+                            <img src="../image/api_20.png" alt="">
+                        </div>
+                    </div>
+                    <div class="sp1_2 industry clearfix" tapmode data-url="http://nvzhuang.tmall.com/market/fushi/nvzhuang_mobile.php" data-title="精品女装" onclick="">
+                        <div class="industry_left">
+                            <span class="title">母婴</span>
+                            <span class="brief">萌装过冬</span>
+                        </div>
+                        <div class="industry_right">
+                            <img src="../image/api_20.png" alt="">
+                        </div>
+                    </div>
+                    <div class="sp1_2 industry clearfix" tapmode data-url="http://nvzhuang.tmall.com/market/fushi/nvzhuang_mobile.php" data-title="精品女装" onclick="">
+                        <div class="industry_left">
+                            <span class="title">汽车车品</span>
+                            <span class="brief">购车享大礼</span>
+                        </div>
+                        <div class="industry_right">
+                            <img src="../image/api_20.png" alt="">
+                        </div>
+                    </div>
+                    <div class="sp1_2 industry clearfix" tapmode data-url="http://nvzhuang.tmall.com/market/fushi/nvzhuang_mobile.php" data-title="精品女装" onclick="">
+                        <div class="industry_left">
+                            <span class="title">家居建材</span>
+                            <span class="brief">实惠装新家</span>
+                        </div>
+                        <div class="industry_right">
+                            <img src="../image/api_20.png" alt="">
+                        </div>
+                    </div>
+                    <div class="sp1_2 industry clearfix" tapmode data-url="http://nvzhuang.tmall.com/market/fushi/nvzhuang_mobile.php" data-title="精品女装" onclick="">
+                        <div class="industry_left">
+                            <span class="title">内衣</span>
+                            <span class="brief">暖在心里</span>
+                        </div>
+                        <div class="industry_right">
+                            <img src="../image/api_20.png" alt="">
+                        </div>
+                    </div>
+                    <div class="sp1_2 industry clearfix" tapmode data-url="http://nvzhuang.tmall.com/market/fushi/nvzhuang_mobile.php" data-title="精品女装" onclick="">
+                        <div class="industry_left">
+                            <span class="title">家纺</span>
+                            <span class="brief">秋冬暖芯</span>
+                        </div>
+                        <div class="industry_right">
+                            <img src="../image/api_20.png" alt="">
+                        </div>
+                    </div>
+                    <div class="sp1_2 industry clearfix" tapmode data-url="http://nvzhuang.tmall.com/market/fushi/nvzhuang_mobile.php" data-title="精品女装" onclick="">
+                        <div class="industry_left">
+                            <span class="title">大家电</span>
+                            <span class="brief">我为家电狂</span>
+                        </div>
+                        <div class="industry_right">
+                            <img src="../image/api_20.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <!-- 更多惊喜 -->
+                <div class="more clearfix">
+                    <div class="sp1 reload_header">
+                        <span class="title">行业精选</span>
+                        <span class="reload" tapmode>
+                            <i class="reload_icon"></i>
+                            换一组
+                        </span>
+                    </div>
+                    <div class="more_unit sp1_2" tapmode data-url="http://detail.m.tmall.com/item.htm?spm=875.7403452.20000008.2.M7uZ74&id=13570491314&abbucket=&acm=03317.1003.1.99094&uuid=jsjqEXAo_mFKjC0zy31sCAXbPnigNyV/z&abtest=&scm=1003.1.03317.ITEM_13570491314_99094&pos=2" data-title="键盘" onclick="">
+                        <div class="img_box">
+                            <img src="../image/api_20.png" alt="">
+                        </div>
+                        <span class="price">￥398.0</span>
+                    </div>
+                    <div class="more_unit sp1_2" tapmode data-url="http://detail.m.tmall.com/item.htm?spm=875.7403452.20000008.13.M7uZ74&id=18826634839&abbucket=&acm=03317.1003.1.99094&uuid=OUtYF9zr_mFKjC0zy31sCAXbPnigNyV/z&abtest=&scm=1003.1.03317.ITEM_18826634839_99094&pos=3" data-title="哑铃" onclick="">
+                        <div class="img_box">
+                            <img src="../image/api_20.png" alt="">
+                        </div>
+                        <span class="price">￥288.0</span>
+                    </div>
+                    <div class="more_unit sp1_2" tapmode data-url="http://detail.m.tmall.com/item.htm?spm=875.7403452.20000008.13.M7uZ74&id=18826634839&abbucket=&acm=03317.1003.1.99094&uuid=OUtYF9zr_mFKjC0zy31sCAXbPnigNyV/z&abtest=&scm=1003.1.03317.ITEM_18826634839_99094&pos=3" data-title="哑铃" onclick="">
+                        <div class="img_box">
+                            <img src="../image/api_20.png" alt="">
+                        </div>
+                        <span class="price">￥95.0</span>
+                    </div>
+                    <div class="more_unit sp1_2" tapmode data-url="http://detail.m.tmall.com/item.htm?spm=875.7403452.20000008.2.M7uZ74&id=13570491314&abbucket=&acm=03317.1003.1.99094&uuid=jsjqEXAo_mFKjC0zy31sCAXbPnigNyV/z&abtest=&scm=1003.1.03317.ITEM_13570491314_99094&pos=2" data-title="键盘" onclick="">
+                        <div class="img_box">
+                            <img src="../image/api_20.png" alt="">
+                        </div>
+                        <span class="price">￥148.0</span>
+                    </div>
+                </div>
+                <!-- 更多惊喜 end -->
+                <img src="../image/api_2.png" alt="" class="big_ads last sp1" tapmode data-url="http://h5.m.taobao.com/channel/act/other/newbook.php" data-title="新书" onclick="">
+            </div>
+            <!-- 下方详情 end -->
+            <!--  -->
+            <div class="standard_hor">
+                <span class="title"></span>
+                <span class="brief"></span>
+                <img src="" alt="">
+            </div>
+            <!-- div.standard_per -->
+            <!--  -->
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/zepto.min.js"></script>
+<script type="text/javascript" src="../script/swipe.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript">
+    apiready = function(){
+        Zepto(function($){
+            var sp1_3,sp1_2,sp2_3,sp1,sp1_3_big;
+            var em = parseInt(getComputedStyle(document.body,false).fontSize);
+            var emW = em*3/4;
+            var bodyW = $api.offset(document.body).w;
+            sp1_3 = (bodyW - 4*emW)/3;
+            sp1_3_big = (bodyW - 4*emW)/3 + emW;
+            sp2_3 = bodyW - sp1_3 - 3*emW;
+            sp1_2 = (bodyW - 3*emW)/2;
+            sp1 = bodyW - 2*emW;
+            $('.sp1_3').width(sp1_3);
+            $('.sp1_3_big').width(sp1_3_big);
+            $('.sp2_3').width(sp2_3);
+            $('.sp1_2').width(sp1_2);
+            $('.sp1').width(sp1);
+            $('.venue_big_inner').width((sp1_3_big*3 + emW*2));
+            $('.more_unit .img_box').width(sp1_2 - emW*2);
+            var aLi = $('#title-box-ul li');
+            window.mySwipe = Swipe($api.byId('slider'),{
+                auto: 3000,
+                continuous: true,
+                callback: function(index,elem) {
+                    var i = aLi.length;
+                    while (i--) {
+                        aLi[i].className = '';
+                    }
+                    aLi[index].className = 'active';
+                }
+            });
+        });
+    }
+</script>
+</html>

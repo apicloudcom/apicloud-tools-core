@@ -1,0 +1,231 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>window</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <style>
+        html,body{height: 100%}
+        #wrap{
+            height: 100%;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-flex-flow: column;
+            flex-flow: column;
+        }
+        .pull-left{
+            float: left;
+        }
+        .pull-right{
+            float: right;
+        }
+        .clearfix:after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        #index{
+            background-color: #EDEDED;
+        }
+        #header{
+            background-color: #ffffff;
+        }
+        #header .header-content{
+            height: 48px;
+            width: 100%;
+            position: relative;
+        }
+        #header .header-btn{
+            width: 56px;
+            height: 48px;
+        }
+        #header .header-btn.tap-active,#header .header-btn:active{
+            background-color: #ffffff;
+        }
+        .header-btn.qiushi{
+            background: url(../image/ic_qiushi.png) center center no-repeat;
+            background-size: 24px 24px;
+        }
+        .header-btn.nearby{
+            background: url(../image/ic_nearby.png) center center no-repeat;
+            background-size: 24px 24px;
+        }
+        .header-btn.message{
+            background: url(../image/ic_message.png) center center no-repeat;
+            background-size: 24px 24px;
+        }
+        .header-btn.qiubaihuo{
+            background: url(../image/ic_qiubaihuo.png) center center no-repeat;
+            background-size: 24px 24px;
+        }
+        .header-btn.menu{
+            background: url(../image/page_menu_icon.png) center center no-repeat;
+            background-size: 24px 24px;
+        }
+
+
+
+
+        .qiushi-tap-active,.header-btn.qiushi.active{
+            background:  url(../image/ic_qiushi_select.png) center center no-repeat!important;
+            background-size: 24px 24px!important;
+        }
+        .nearby-tap-active,.header-btn.nearby.active{
+            background:  url(../image/ic_nearby_select.png) center center no-repeat!important;
+            background-size: 24px 24px!important;
+        }
+        .message-tap-active,.header-btn.message.active{
+            background:  url(../image/ic_message_select.png) center center no-repeat!important;
+            background-size: 24px 24px!important;
+        }
+        .qiubaihuo-tap-active,.header-btn.qiubaihuo.active{
+            background: url(../image/ic_qiubaihuo_select.png) center center no-repeat!important;
+            background-size: 24px 24px!important;
+        }
+        .qiushi-tabBar{
+            height: 48px;
+            background-color: #E5E5E5;
+            position: relative;
+        }
+        .qiushi-tabBar .tabBar-btn{
+            width: 20%;
+            height: 47px;
+            border-bottom: 1px solid #CDCDCD;
+            font-size: 0.8em;
+            line-height: 48px;
+            color: #63625E;
+        }
+        .qiushi-tabBar .tabBar-btn:active,.qiushi-tabBar .tabBar-btn.tap-active{
+            background-color: #E5E5E5;
+            color: #72716E;
+        }
+        .qiushi-tabBar .tabBar-btn.active,.tabBar-btn.text-active{
+            color: #6ab494;
+        }
+        .qiushi-tabBar .tabBar-bar{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 20%;
+            height: 4px;
+            background-color: #6ab494;
+            -webkit-transition: all .25s ease;
+            transition: all .25s ease;
+        }
+        #bottom-tabBar{
+            width: 100%;
+            height: 48px;
+        }
+        .bottom-btn{
+            width: 50%;
+            height: 48px;
+            text-align: center;
+        }
+        .icon{
+            height: 48px;
+            width: 24px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .text{
+            display: inline-block;
+            height: 48px;
+            line-height: 48px;
+        }
+        .bottom-spliter{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 1px;
+            height: 24px;
+            -webkit-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);
+        }
+        #bottom-tabBar{
+            position: relative;
+        }
+        #bottom-tabBar .bottom-btn{
+            background-color: #E5E5E5;
+        }
+        #bottom-tabBar .bottom-btn:active,#bottom-tabBar .bottom-btn.top-active{
+            background-color: #E5E5E5;
+        }
+        #bottom-tabBar .icon-submit{
+            background: url(../image/submit.png) center center no-repeat;
+            background-size: 24px 24px;
+        }
+        #bottom-tabBar .icon-examine{
+            background: url(../image/examine.png) center center no-repeat;
+            background-size: 24px 24px;
+        }
+        #bottom-tabBar .bottom-spliter{
+            background-color: #FEF0CF;
+        }
+        #bottom-tabBar .text{
+            color: #323237;
+        }
+    </style>
+</head>
+<body id="index">
+<div id="wrap">
+    <div id="header">
+        <div class="header-content clearfix">
+            <div class="header-btn qiushi pull-left active" tapmode="qiushi-tap-active" onclick=""></div>
+            <div class="header-btn nearby pull-left " tapmode="nearby-tap-active" onclick=""></div>
+            <div class="header-btn message pull-left" tapmode="message-tap-active" onclick=""></div>
+            <div class="header-btn menu pull-right" tapmode="tap-active" onclick=""></div>
+            <div class="header-btn qiubaihuo pull-right " tapmode="qiubaihuo-tap-active"></div>
+        </div>
+        <div class="qiushi-tabBar clearfix">
+            <div class="tabBar-btn pull-left all-type text-active" tapmode="text-active" onclick="">图文</div>
+            <div class="tabBar-btn pull-left text-type " tapmode="text-active" onclick="">纯文</div>
+            <div class="tabBar-btn pull-left pic-type" tapmode="text-active" onclick="">纯图</div>
+            <div class="tabBar-btn pull-left latest-type" tapmode="text-active" onclick="">最新</div>
+            <div class="tabBar-btn pull-left essence-type" tapmode="text-active" onclick="">精华</div>
+            <div class="tabBar-bar"></div>
+        </div>
+    </div>
+    <div id="main">
+
+    </div>
+    <div id="bottom-tabBar">
+        <div class="pull-left bottom-btn" tapmode="tap-active" onclick="">
+            <span class="icon icon-submit"></span>
+            <span class="text">投稿</span>
+        </div>
+        <div class="pull-left bottom-btn" tapmode="tap-active" onclick="">
+            <span class="icon icon-examine"></span>
+            <span class="text">审帖</span>
+        </div>
+        <div class="bottom-spliter"></div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+
+    apiready=function(){
+        var header=$api.byId('header'),
+        main = $api.byId('main');
+		$api.fixIos7Bar(header);
+        var header_h=$api.offset(header).h,
+        main_h = $api.offset(main).h;
+        
+        api.openFrame({
+            name:'apicloudFrame1',
+            url:'apicloudFrame1.html',
+            rect:{
+                x:0,
+                y:header_h,
+                w:'auto',
+                h:main_h
+            }
+        })
+    }
+</script>
+</html>

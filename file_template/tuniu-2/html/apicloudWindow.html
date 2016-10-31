@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>window</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/common.css"/>
+</head>
+<style>
+    body{
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-flex-direction: column;
+        flex-direction: column;
+    }
+
+    /*header*/
+
+    header {
+        background-color: #E5E5E5;
+        border-bottom: 1px solid #E5E5E5;
+    }
+
+    .header {
+        display: -webkit-box;
+        -webkit-box-pack: center;
+        -webkit-box-align: center;
+    }
+
+    .bell {
+        padding: 20px 10px !important;
+        background-image: url("../image/bell.png");
+    }
+
+    .dock {
+        background-image: url("../image/dock.png");
+    }
+
+    .title {
+        -webkit-box-flex: 1;
+        text-align: center;
+        font-size: 20px;
+    }
+
+    .header a, .footer a {
+        display: block;
+        background-size: 30px;
+        background-repeat: no-repeat;
+        background-position: center;
+        padding: 20px;
+    }
+
+    .back {
+        background-image: url("../image/back.png");
+    }
+
+    /*header*/
+    .content {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+    }
+
+    .order {
+        color: #6ab494;
+        font-size: 16px;
+        background-image: url("../image/order.png");
+        background-position-x: 35% !important;
+        padding: 15px !important;
+        text-align: center;
+    }
+
+    .footer {
+        background-color: #E5E5E5;
+    }
+</style>
+<body>
+<header>
+    <div class="header">
+        <a class="back" tapmode="" onclick=""></a>
+
+        <div class="title" id="title">产品详情</div>
+        <a class="bell" tapmode="" onclick=""></a>
+        <a class="dock" tapmode="" onclick=""></a>
+    </div>
+</header>
+<div class="content">
+
+</div>
+<footer class="footer">
+    <a class="order">立即预定</a>
+</footer>
+<script type="text/javascript" src="../script/api.js"></script>
+<script>
+    apiready=function(){
+        var $header=$api.dom('.header');
+        $api.fixIos7Bar($header);
+        var $footer=$api.dom('.footer');
+        var $header_h=$api.offset($header).h;
+        var $footer_h=$api.offset($footer).h;
+        api.openFrame({
+            name:'apicloudFrame1',
+            url:'apicloudFrame1.html',
+            rect:{
+                x:0,
+                y:$header_h,
+                w:'auto',
+                h:api.winHeight-$header_h-$footer_h
+            }
+        })
+    }
+</script>
+</body>
+</html>
