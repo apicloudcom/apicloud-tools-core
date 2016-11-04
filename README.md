@@ -106,3 +106,4 @@ APICloud.endWifi({})
 ## 应用实例
 
 * [APICloud For Atom,一款为Atom编辑器打造的开发工具](https://atom.io/packages/apicloud)
+* [APICloud 提供的一款适用于终端/命令行的 APICloud 平台开发工具](https://www.npmjs.com/package/apicloud-cli)
