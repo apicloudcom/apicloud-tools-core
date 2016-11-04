@@ -1,11 +1,11 @@
 'use strict';
 const WebSocketServer = require('ws').Server
 const path = require('path')
-const {exec} = require('child_process')
 const fse = require('fs-extra')
 const EventEmitter = require('events')
+const CLI_COMMAND = - 1
 
-const WifSync = {
+const WifiSync = {
   port:null,
   socketServer: null,
   workspace: null,
@@ -15,7 +15,6 @@ const WifSync = {
   emitter: new EventEmitter(),
   localIp(){
     var os=require('os'),
-    iptable={},
     ifaces=os.networkInterfaces();
 
     let address = "0.0.0.0"
@@ -68,7 +67,6 @@ const WifSync = {
   })
 
     const wss = new WebSocketServer({ server: server })
-    const url = require('url')
 
     this.port = port
     this.socketServer = wss
@@ -84,6 +82,8 @@ const WifSync = {
   },
   end({}){
     this.socketServer.close()
+    this.httpServer.close()
+    console.log("APICloud Wifi 真机同步服务 已关闭...")
   },
   handleConnection({socket}){
     ++ this.clientsCount
@@ -98,9 +98,7 @@ const WifSync = {
     }))
 
     socket.on("error",(err)=>{
-      if(err){
-        // do nothing...
-      }
+        // silent...
     })
 
     socket.on('close', ()=>{
@@ -111,6 +109,12 @@ const WifSync = {
 
     socket.on("message", (message)=>{
         let receiveCmd = JSON.parse(message)
+        if(CLI_COMMAND === receiveCmd.command){ // cli 保留编号.
+          let {payload} = receiveCmd
+          payload = payload || {}
+          payload["params"]["socket"] = socket
+          this.handleCli(payload)
+        }
 
         if(4 === receiveCmd.command ){
           let cmd = this.replyLoaderHeartbeatCmd({command:receiveCmd.command})
@@ -208,8 +212,6 @@ const WifSync = {
     this.broadcastCommand({socketServer:this.socketServer,cmd:cmd})
   },
   broadcastCommand({socketServer,cmd}){// 广播.
-    let cmdStr = JSON.stringify(cmd)
-
     socketServer.clients.forEach((socket)=>{
       this.sendCommand({socket:socket,cmd:cmd})
     })
@@ -217,9 +219,7 @@ const WifSync = {
   sendCommand({socket,cmd}){
     let cmdStr = JSON.stringify(cmd)
     socket.send(cmdStr, (error)=>{
-      if(error){
-        console.log(error)
-      }
+      // silent...
     })
   },
   handleLog({cmd}){
@@ -332,6 +332,50 @@ const WifSync = {
     res.write("404 Not found")
     res.end()
   },
+  handleCli({method,params}){
+    const {socket} = params
+    if(typeof CLI[method] === "function"){
+      CLI[method](params)
+    }else{
+      console.log(`不支持的方法: ${method}`)
+      socket.close()
+    }
+  },
 }
 
-module.exports = WifSync
+const CLI = {
+  wifiSync({project="./",updateAll=true,socket}){
+    WifiSync.sync({project:project,updateAll:updateAll})
+    socket.close()
+  },
+  wifiStop({socket}){
+    WifiSync.end({})
+  },
+  wifiPreview({file,socket}){
+    WifiSync.preview({file:file})
+    socket.close()
+  },
+  wifiInfo({socket}){
+    const wifiInfo = {ip:WifiSync.localIp(),
+      port:WifiSync.port,clientsCount:WifiSync.clientsCount}
+
+      let cmd = {
+                  command:CLI_COMMAND,
+                  payload:wifiInfo
+                }
+
+      WifiSync.sendCommand({socket,cmd})
+      socket.close()
+  },
+  wifiLog({socket}){
+    WifiSync.on("log",(log)=>{
+      let cmd = {
+                  command: CLI_COMMAND,
+                  payload:log
+                }
+      WifiSync.sendCommand({socket,cmd})
+    })
+  }
+}
+
+module.exports = WifiSync

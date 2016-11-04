@@ -1,6 +1,6 @@
 {
   "name": "apicloud-tools-core",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "GPL-3.0",
   "description": "APICloud 开发工具核心库",
   "main": "./lib/APICloud.js",
@@ -23,6 +23,14 @@
     "url": "https://github.com/apicloudcom/apicloud-tools-core/issues"
   },
   "homepage": "https://github.com/apicloudcom/apicloud-tools-core#readme",
-  "devDependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.7",
+    "babel-preset-latest": "^6.16.0",
+    "json-loader": "^0.5.4",
+    "source-map-support": "^0.4.6",
+    "webpack": "^1.13.3"
+  },
   "author": "APICloud"
 }
