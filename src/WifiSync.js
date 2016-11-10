@@ -17,15 +17,15 @@ const WifiSync = {
     var os=require('os'),
     ifaces=os.networkInterfaces();
 
-    let address = "0.0.0.0"
-
+    let address = []
     for (var dev in ifaces) {
       ifaces[dev].forEach(function(details,alias){
         if ("IPv4" === details.family && details.address !== "127.0.0.1") {
-          address = details.address
+          address.push(details.address)
         }
-      });
+      })
     }
+
     return address
   },
   start({port=8686}){
@@ -77,7 +77,7 @@ const WifiSync = {
     })
 
     server.listen(port, ()=>{
-      console.log('APICloud Is Listening on ' + this.localIp() + ":" + server.address().port)
+      console.log(`APICloud Is Listening on ip: ${JSON.stringify(this.localIp())} port: ${server.address().port})`)
     })
   },
   end({}){
