@@ -245,8 +245,10 @@ const WifiSync = {
                   let fileList = []
 
                   fse.walk(project,{filter:(file)=>{
-                    var name = path.basename(file);
-                    return ! /^[.]+/.test(name)
+                    var name = path.basename(file)
+                    let relativePath = path.relative(project, file)
+
+                    return ! /^[.]+/.test(name) && ! /^node_modules/.test(relativePath)
                   }})
                     .on('data', (item)=>{
                       let itemPath = item.path
