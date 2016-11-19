@@ -4,6 +4,7 @@ const path = require('path')
 const fse = require('fs-extra')
 const EventEmitter = require('events')
 const CLI_COMMAND = - 1
+const glob = require("glob")
 
 const WifiSync = {
   port:null,
@@ -237,42 +238,42 @@ const WifiSync = {
             updateAll: updateAll,  //是否全量更新
           }
   },
+  globMatch({project,sync=".syncignore"}){ // 读取 .syncignore 忽略后的文件.
+    let syncPath = path.resolve(project,sync)
+    let syncignore = (fse.existsSync(syncPath) &&
+      fse.readFileSync(syncPath,{encoding:"utf8"})) || ""
+
+    let globmaths =  glob.sync("**",{
+      nodir:true,
+      ignore:syncignore,
+      absolute: true,
+      cwd:project,
+    })
+
+    return globmaths
+  },
   fileListCmd({appId,timestamp=0,workspace}){ // 指定时间戳后的""文件列表",
 
     return new Promise((resolve)=>{
       this.projectPath({appId:appId,workspace:workspace})
           .then((project)=>{
-                  let fileList = []
+            let fileList = this.globMatch({project:project}) || []
+            fileList = fileList.filter((file)=>{
+              const stat = fse.statSync(file)
+              const {ctime} = stat
+              const fileListSynced = this.fileListSynced[appId]
 
-                  fse.walk(project,{filter:(file)=>{
-                    var name = path.basename(file)
-                    let relativePath = path.relative(project, file)
+              return (ctime.getTime()/1000  > timestamp) ||
+                  ! (fileListSynced && fileListSynced[itemPath])
+            }).map(file=>{
+              return this.absoluteUrlPath({file:file,workspace:workspace,appId:appId})
+            })
 
-                    return ! /^[.]+/.test(name) && ! /^node_modules/.test(relativePath)
-                  }})
-                    .on('data', (item)=>{
-                      let itemPath = item.path
-                      let itemStats = item.stats
-
-                      if(itemStats.isDirectory()){ // 说明是目录.
-                        return
-                      }
-
-                      const {ctime} = itemStats
-                      const fileListSynced = this.fileListSynced[appId]
-                      if((ctime.getTime()/1000  > timestamp) ||
-                          ! (fileListSynced && fileListSynced[itemPath])){
-                          let absoluteUrlPath = this.absoluteUrlPath({file:itemPath,workspace:workspace,appId:appId})
-                          fileList.push(absoluteUrlPath)
-                      }
-                    })
-                    .on('end', function () {
-                      resolve({
-                              command : 3,
-                              list:fileList,
-                              timestamp:Math.floor(Date.now() / 1000)
-                            })
-                    })
+            resolve({
+                    command : 3,
+                    list:fileList,
+                    timestamp:Math.floor(Date.now() / 1000)
+                  })
                 })
           })
   },

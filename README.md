@@ -4,7 +4,9 @@
 
 **[APICloud](http://www.apicloud.com/)** 开发工具核心库,支持新建页面模板,新建应用模板,WiFi同步等核心功能.开发者可基于此核心库,定制各种编辑器插件或者将 APICloud 的开发调试功能与已有的自动化业务流程结合,提升开发效率.
 
-## 特点
+开源地址: [https://github.com/apicloudcom/apicloud-tools-core](https://github.com/apicloudcom/apicloud-tools-core)
+
+## 特性
 
 * 轻量: 底层WiFi同步核心功能,使用 *nodejs* 重写,代码体积缩减到 *2M* 以下;
 * 开源: 基于 **GPL-3.0** 协议开源,开发者可自用扩展与定制;
@@ -101,6 +103,39 @@ APICloud.wifiLog(({level,content})=>{
 
 ```js
 APICloud.endWifi({})
+```
+
+## 自定义真机同步时想要忽略的文件或目录
+
+核心库及其衍生工具插件,支持在项目根目录添加 **.syncignore** 文件,来自定义想在在真机同步时忽略的文件.这一功能,对于那些基于webpack等自动化工具构建项目的开发者来说,意义重大.
+
+不同于svn/git等的ignore,核心库真机同步的 ignore 功能基于[node-glob](https://github.com/isaacs/node-glob)开发,支持标准的[Glob](https://github.com/isaacs/node-glob#glob-primer)表达式.
+
+### 常用格式示例
+
+* 忽略某一类型的文件,如 *.js.map 文件:
+
+```
+**/*.js.map
+```
+
+* 忽略项目中所有某一名称的文件夹极其子文件(夹),如node_modules目录:
+
+```
+**/node_modules/**
+```
+
+* 忽略根目录中某一目录下的所有文件(夹),如src目录:
+
+```
+src/**
+```
+
+* 基于自动化webpack等自动化构建工具常用的表达式:
+
+```
+{**/*.js.map,**/node_modules/**,src/**}
+
 ```
 
 ## 应用实例
