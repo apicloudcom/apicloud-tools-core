@@ -1,0 +1,4 @@
+*.js.map
+src/*
+.babelrc
+webpack.config.js

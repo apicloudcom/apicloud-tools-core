@@ -1,6 +1,6 @@
 {
   "name": "apicloud-tools-core",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "license": "GPL-3.0",
   "description": "APICloud 开发工具核心库",
   "main": "./lib/APICloud.js",
