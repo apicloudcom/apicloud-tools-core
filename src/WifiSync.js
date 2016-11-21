@@ -246,7 +246,7 @@ const WifiSync = {
     let globmaths =  glob.sync("**",{
       nodir:true,
       ignore:syncignore,
-      absolute: true,
+      realpath: true,
       cwd:project,
     })
 
@@ -260,11 +260,10 @@ const WifiSync = {
             let fileList = this.globMatch({project:project}) || []
             fileList = fileList.filter((file)=>{
               const stat = fse.statSync(file)
-              const {ctime} = stat
+              const {mtime} = stat
               const fileListSynced = this.fileListSynced[appId]
-
-              return (ctime.getTime()/1000  > timestamp) ||
-                  ! (fileListSynced && fileListSynced[itemPath])
+              return (mtime.getTime()/1000.0  > timestamp) ||
+                  ! (fileListSynced && fileListSynced[file])
             }).map(file=>{
               return this.absoluteUrlPath({file:file,workspace:workspace,appId:appId})
             })
