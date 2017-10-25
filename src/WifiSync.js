@@ -80,6 +80,8 @@ const WifiSync = {
     server.listen(port, ()=>{
       console.log(`APICloud Is Listening on ip: ${JSON.stringify(this.localIp())} port: ${server.address().port})`)
     })
+
+    return wss;
   },
   end({}){
     this.socketServer.close()
