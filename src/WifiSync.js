@@ -29,7 +29,7 @@ const WifiSync = {
 
     return address
   },
-  start({port=8686}){
+  start({port=8686,host='0.0.0.0'}){
     const server = require('http').createServer((req,res) => {
     let urlPath = req.url
     let appIdInfo = urlPath.match(/^\/([^\/]+)/)
@@ -77,8 +77,8 @@ const WifiSync = {
       this.handleConnection({socket:socket})
     })
 
-    server.listen(port, ()=>{
-      console.log(`APICloud Is Listening on ip: ${JSON.stringify(this.localIp())} port: ${server.address().port})`)
+    server.listen(port,host, ()=>{
+      console.log(`APICloud Is Listening on ip: ${server.address().address} port: ${server.address().port})`)
     })
   },
   end({}){

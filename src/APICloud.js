@@ -16,8 +16,8 @@ const APICloud = {
   fileTemplateConfig(){ // 文件模板配置.
     return file_template_config
   },
-  startWifi({port}){/* 启动wifi服务. */
-    return WifiSync.start({port:port})
+  startWifi({port=8686,host='0.0.0.0'}){/* 启动wifi服务. */
+    return WifiSync.start({port:port,host:host})
   },
   endWifi({}){ /* 停止 wifi 服务. */
     return WifiSync.end({});
