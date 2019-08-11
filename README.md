@@ -25,7 +25,7 @@ npm install  apicloud-tools-core --save
 ```js
 const APICloud = require("apicloud-tools-core")
 
-this.startWifi({port: 8686})
+this.startWifi({port: 8686,host:'0.0.0.0'})
 ```
 
 ## 接口调用示例
@@ -53,7 +53,7 @@ APICloud.addFileTemplate({name:name,template:template})
 ### 启动wifi服务
 
 ```js
-APICloud.startWifi({port:8086})
+APICloud.startWifi({port: 8686,host:'0.0.0.0'})
 ```
 
 ### wifi 增量/全量同步
