@@ -56,6 +56,7 @@ const WifiSync = {
     const wss = new WebSocketServer({ server: server })
 
     this.port = port
+    this.host = host
     this.socketServer = wss
     this.httpServer = server
 
@@ -64,9 +65,9 @@ const WifiSync = {
     })
 
     server.listen(port,host, ()=>{
-      console.log(`APICloud Is Listening on ip: ${server.address().address} port: ${server.address().port})`)
+        this.host = server.address().address
+        console.log(`APICloud Is Listening on ip: ${server.address().address} port: ${server.address().port})`)
     })
-      this.host = server.address().address
       return wss;
   },
   end({}){
