@@ -22,7 +22,7 @@ const APICloud = {
   endWifi({}){ /* 停止 wifi 服务. */
     return WifiSync.end({});
   },
-  syncWifi({projectPath,syncAll}){ /* wifi 增量/全量同步. */
+  syncWifi({projectPath,syncAll=false}){ /* wifi 增量/全量同步. */
     return WifiSync.sync({project:projectPath,updateAll:syncAll})
   },
   previewWifi({file}){ /* 预览. */
