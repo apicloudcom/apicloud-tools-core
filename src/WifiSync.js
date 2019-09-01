@@ -8,28 +8,14 @@ const glob = require("glob")
 
 const WifiSync = {
   port:null,
+  host:null,
   socketServer: null,
   workspace: null,
   httpServer:null,
   fileListSynced:{}, // 已同步过的文件,按appId存储,
   clientsCount:0,
   emitter: new EventEmitter(),
-  localIp(){
-    var os=require('os'),
-    ifaces=os.networkInterfaces();
-
-    let address = []
-    for (var dev in ifaces) {
-      ifaces[dev].forEach(function(details,alias){
-        if ("IPv4" === details.family && details.address !== "127.0.0.1") {
-          address.push(details.address)
-        }
-      })
-    }
-
-    return address
-  },
-  start({port=8686}){
+  start({port=8686,host='0.0.0.0'}){
     const server = require('http').createServer((req,res) => {
     let urlPath = req.url
     let appIdInfo = urlPath.match(/^\/([^\/]+)/)
@@ -70,6 +56,7 @@ const WifiSync = {
     const wss = new WebSocketServer({ server: server })
 
     this.port = port
+    this.host = host
     this.socketServer = wss
     this.httpServer = server
 
@@ -77,9 +64,11 @@ const WifiSync = {
       this.handleConnection({socket:socket})
     })
 
-    server.listen(port, ()=>{
-      console.log(`APICloud Is Listening on ip: ${JSON.stringify(this.localIp())} port: ${server.address().port})`)
+    server.listen(port,host, ()=>{
+        this.host = server.address().address
+        console.log(`APICloud Is Listening on ip: ${server.address().address} port: ${server.address().port})`)
     })
+      return wss;
   },
   end({}){
     this.socketServer.close()
@@ -141,7 +130,7 @@ const WifiSync = {
         }
     })
   },
-  sync({project,updateAll}){// 更新,全量或增量.
+  sync({project,updateAll=false}){// 更新,全量或增量.
    if(typeof project !== "string"){
       console.log(`${project} 不是一个有效的文件路径`)
       return
@@ -231,7 +220,7 @@ const WifiSync = {
     console.log("on:" + JSON.stringify(event))
     this.emitter.on(event,callback)
   },
-  syncCmd({appId,updateAll=true}){// 发送‘wifi同步测试’指令
+  syncCmd({appId,updateAll=false}){// 发送‘wifi同步测试’指令
     return {
             command : 1,
             appid: appId,//当前应用id
@@ -346,7 +335,7 @@ const WifiSync = {
 }
 
 const CLI = {
-  wifiSync({project="./",updateAll=true,socket}){
+  wifiSync({project="./",updateAll=false,socket}){
     WifiSync.sync({project:project,updateAll:updateAll})
     socket.close()
   },
@@ -358,7 +347,7 @@ const CLI = {
     socket.close()
   },
   wifiInfo({socket}){
-    const wifiInfo = {ip:WifiSync.localIp(),
+    const wifiInfo = {ip:WifiSync.host,
       port:WifiSync.port,clientsCount:WifiSync.clientsCount}
 
       let cmd = {

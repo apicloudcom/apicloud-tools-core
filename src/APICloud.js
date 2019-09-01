@@ -16,13 +16,13 @@ const APICloud = {
   fileTemplateConfig(){ // 文件模板配置.
     return file_template_config
   },
-  startWifi({port}){/* 启动wifi服务. */
-    return WifiSync.start({port:port})
+  startWifi({port=8686,host='0.0.0.0'}){/* 启动wifi服务. */
+    return WifiSync.start({port:port,host:host})
   },
   endWifi({}){ /* 停止 wifi 服务. */
     return WifiSync.end({});
   },
-  syncWifi({projectPath,syncAll}){ /* wifi 增量/全量同步. */
+  syncWifi({projectPath='./',syncAll=false}){ /* wifi 增量/全量同步. */
     return WifiSync.sync({project:projectPath,updateAll:syncAll})
   },
   previewWifi({file}){ /* 预览. */
