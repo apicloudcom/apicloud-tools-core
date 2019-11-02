@@ -18,7 +18,7 @@
     "fs-extra": "^0.30.0",
     "glob": "^7.1.1",
     "prompt": "^1.0.0",
-    "ws": "^1.1.1"
+    "ws": "^7.2.0"
   },
   "bugs": {
     "url": "https://github.com/apicloudcom/apicloud-tools-core/issues"
